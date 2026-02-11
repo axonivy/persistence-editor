@@ -1,0 +1,51 @@
+{
+  "common": {
+    "hotkey": {
+      "focusInscription": "Fokus Detailansicht ({{hotkey}})",
+      "focusMain": "Fokus Hauptansicht ({{hotkey}})",
+      "focusToolbar": "Fokus Toolbar ({{hotkey}})",
+      "help": "Hilfe öffnen ({{hotkey}})",
+      "redo": "Wiederholen ({{hotkey}})",
+      "undo": "Rückgängig ({{hotkey}})"
+    },
+    "label": {
+      "cancel": "Abbrechen",
+      "details": "Details",
+      "displayName": "Anzeigename",
+      "name": "Name",
+      "remove": "Entfernen"
+    },
+    "message": {
+      "errorOccurred": "Ein Fehler ist aufgetreten: {{message}}"
+    }
+  },
+  "dialog": {
+    "addPersistence": {
+      "desc": "Eine neue Persistenz hinzufügen.",
+      "title": "Persistenz hinzufügen"
+    },
+    "create": "Erstellen",
+    "createTooltip": "Halte {{modifier}} gedrückt, um eine weitere Persistenz hinzuzufügen."
+  },
+  "hotkey": {
+    "addPersistence": "Persistenz hinzufügen ({{hotkey}})",
+    "deletePersistence": "Persistenz löschen ({{hotkey}})"
+  },
+  "label": {
+    "memberPersistences": "Mitglieder",
+    "noPersistenceSelected": "Keine Persistenz ausgewählt",
+    "noPersistencesFound": "Keine Persistenzen gefunden",
+    "parentPersistence": "Übergeordnete Persistenz"
+  },
+  "message": {
+    "addFirstPersistence": "Fügen Sie Ihre erste Persistenz hinzu, um zu beginnen",
+    "emptyName": "Name darf nicht leer sein.",
+    "errorOnly": "Fehler: {{error}}",
+    "notFound": "Nicht gefunden",
+    "persistenceAlreadyExists": "Persistenz existiert bereits."
+  },
+  "title": {
+    "detail": "Persistenz",
+    "main": "Persistenzen - {{name}}"
+  }
+}

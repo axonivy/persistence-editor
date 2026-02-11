@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "@axonivy/persistence-editor-playwright",
+  "version": "14.0.0-next",
+  "description": "Playwright tests for the Axon Ivy persistence editor",
+  "author": "Axon Ivy AG",
+  "homepage": "https://developer.axonivy.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axonivy/persistence-editor"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.1"
+  },
+  "type": "module",
+  "scripts": {
+    "type": "tsc --noEmit",
+    "build": "tsc --build",
+    "webtest": "playwright test --project=integration-chrome",
+    "webtest:screenshots": "playwright test --project=screenshots",
+    "webtest:*": "playwright test --project=integration-*",
+    "webtest:chrome": "playwright test --project=integration-chrome",
+    "webtest:firefox": "playwright test --project=integration-firefox",
+    "webtest:webkit": "playwright test --project=integration-webkit"
+  }
+}

@@ -1,0 +1,14 @@
+.persistence-editor-main-content {
+  height: 100%;
+  overflow: auto;
+  .persistence-editor-table-field {
+    margin: var(--size-3);
+    min-height: 0;
+  }
+  .ui-table-cell:has(.ui-badge) {
+    padding: var(--size-1);
+  }
+  .persistence-editor-table-container {
+    overflow-x: hidden;
+  }
+}

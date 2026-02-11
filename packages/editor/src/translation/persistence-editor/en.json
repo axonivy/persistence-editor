@@ -1,0 +1,51 @@
+{
+  "common": {
+    "hotkey": {
+      "focusInscription": "Focus Inscription ({{hotkey}})",
+      "focusMain": "Focus Main ({{hotkey}})",
+      "focusToolbar": "Focus Toolbar ({{hotkey}})",
+      "help": "Open Help ({{hotkey}})",
+      "redo": "Redo ({{hotkey}})",
+      "undo": "Undo ({{hotkey}})"
+    },
+    "label": {
+      "cancel": "Cancel",
+      "details": "Details",
+      "displayName": "Display Name",
+      "name": "Name",
+      "remove": "Remove"
+    },
+    "message": {
+      "errorOccurred": "An error has occurred: {{message}}"
+    }
+  },
+  "dialog": {
+    "addPersistence": {
+      "desc": "Add a new persistence.",
+      "title": "Add Persistence"
+    },
+    "create": "Create",
+    "createTooltip": "Hold {{modifier}} to add an additional Persistence."
+  },
+  "hotkey": {
+    "addPersistence": "Add Persistence ({{hotkey}})",
+    "deletePersistence": "Delete Persistence ({{hotkey}})"
+  },
+  "label": {
+    "dataSource": "Data Source",
+    "noPersistenceSelected": "No Persistence Selected",
+    "noPersistencesFound": "No Persistences Found",
+    "parentPersistence": "Parent Persistence"
+  },
+  "message": {
+    "addFirstPersistence": "Add your first persistence to get started",
+    "emptyName": "Name cannot be empty.",
+    "errorOnly": "Error: {{error}}",
+    "notFound": "Not Found",
+    "persistenceAlreadyExists": "Persistence already exists."
+  },
+  "title": {
+    "detail": "Persistence",
+    "main": "Persistences - {{name}}"
+  }
+}

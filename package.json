@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "@axonivy/persistence-editor-root",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "volta": {
+    "node": "24.11.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "ci": "pnpm install --no-frozen-lockfile && pnpm run package && pnpm run type && (pnpm run lint:ci || true) && pnpm run test:ci && pnpm run i18n:ci",
+    "clean": "pnpm run -r clean",
+    "build": "tsc --build",
+    "package": "pnpm run -r package",
+    "build:clean": "pnpm run -r build:clean",
+    "type": "pnpm run -r type",
+    "lint": "eslint",
+    "lint:ci": "eslint -o eslint.xml -f checkstyle",
+    "lint:fix": "eslint --fix",
+    "lint:inspect": "eslint --inspect-config",
+    "i18n": "pnpm run -r i18n",
+    "i18n:ci": "pnpm run -r i18n:ci",
+    "protocol": "pnpm run --filter @axonivy/persistence-editor-protocol",
+    "dev": "pnpm run --filter @axonivy/persistence-editor-standalone dev",
+    "test": "pnpm run --filter @axonivy/persistence-editor test",
+    "test:ci": "pnpm run -r test:ci",
+    "webtest": "pnpm run -r webtest",
+    "update:axonivy:next": "npx --yes npm-check-updates @axonivy* -ws -t semver -u",
+    "raise:version": "lerna version --no-git-tag-version --no-push --ignore-scripts --exact --yes",
+    "publish:next": "lerna publish --exact --canary --preid next --tag-version-prefix beta --pre-dist-tag next --no-git-tag-version --no-push --ignore-scripts --yes"
+  },
+  "devDependencies": {
+    "@axonivy/eslint-config": "~14.0.0-next.1005.12e787a",
+    "@axonivy/prettier-config": "~14.0.0-next.1005.12e787a",
+    "@axonivy/ts-config": "~14.0.0-next.1005.12e787a",
+    "@lerna-lite/cli": "^4.0.0",
+    "@lerna-lite/publish": "^4.0.0",
+    "@lerna-lite/version": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  },
+  "prettier": "@axonivy/prettier-config"
+}

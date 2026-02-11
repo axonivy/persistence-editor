@@ -1,0 +1,5 @@
+.persistence-editor-detail-content {
+  padding: var(--size-3);
+  min-height: 0;
+  overflow: auto;
+}

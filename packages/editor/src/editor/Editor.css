@@ -1,0 +1,6 @@
+.panel {
+  height: 100%;
+}
+.persistence-editor-main-panel {
+  background-color: var(--N75);
+}
