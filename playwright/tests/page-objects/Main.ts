@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
 import { AddPersistenceDialog } from './AddPersistenceDialog';
-import { Table } from './Table';
+import { Table } from './components/Table';
 
 export class Main {
   readonly locator: Locator;

@@ -18,6 +18,10 @@ export interface Persistence {
 export interface EditorFileContent {
   content: string;
 }
+export interface ManagedClassesMeta {
+  id: string;
+  label: string;
+}
 export interface PersistenceContext {
   app: string;
   file: string;
@@ -30,18 +34,18 @@ export interface PersistenceEditorData {
   readonly: boolean;
 }
 export interface PersistenceData {
-  id: string;
   name: string;
+  description: string;
   dataSource: string;
   excludeUnlistedClasses: boolean;
   managedClasses: string[];
-  properties: MapStringListString;
+  properties: MapStringString;
 }
 export interface PersistenceSaveDataArgs {
   context: PersistenceContext;
   data: PersistenceData[];
   directSave: boolean;
 }
-export interface MapStringListString {
-  [k: string]: string[];
+export interface MapStringString {
+  [k: string]: string;
 }

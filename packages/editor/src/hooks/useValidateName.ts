@@ -22,7 +22,7 @@ export const validateName = (name: string, persistences: Array<PersistenceData>)
   if (trimmedName === '') {
     return 'emptyName';
   }
-  if (persistences.map(persistence => persistence.id).includes(trimmedName)) {
+  if (persistences.map(persistence => persistence.name).includes(trimmedName)) {
     return 'persistenceAlreadyExists';
   }
   return undefined;

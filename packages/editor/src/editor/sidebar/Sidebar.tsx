@@ -16,7 +16,12 @@ export const Sidebar = () => {
 
   return (
     <>
-      <SidebarHeader title={persistence?.id ?? t('title.detail')} icon={IvyIcons.PenEdit} className='persistence-editor-detail-header' tabIndex={-1}>
+      <SidebarHeader
+        title={persistence?.name ?? t('title.detail')}
+        icon={IvyIcons.PenEdit}
+        className='persistence-editor-detail-header'
+        tabIndex={-1}
+      >
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>

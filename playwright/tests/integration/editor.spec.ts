@@ -16,7 +16,7 @@ test('select persistence', async ({ page }) => {
   await expect(editor.detail.header).toHaveText('Persistence');
 
   await editor.main.table.row(0).locator.click();
-  await expect(editor.detail.header).toHaveText('league');
+  await expect(editor.detail.header).toHaveText('League Persistence Unit');
 
   await editor.main.table.header(0).locator.click();
   await editor.main.table.expectToHaveNoSelection();
@@ -47,10 +47,9 @@ test('add', async ({ page }) => {
 
   await editor.main.openAddPersistenceDialog();
   await dialog.name.locator.fill('NewPersistence');
-  await dialog.dataSource.locator.fill('SomeOtherDB');
   await dialog.create.click();
   await editor.main.table.expectToHaveRowCount(4);
-  await editor.main.table.row(3).expectToHaveColumns('NewPersistence', 'SomeOtherDB');
+  await editor.main.table.row(3).expectToHaveColumns('NewPersistence', '');
   await editor.main.table.row(3).expectToBeSelected();
   await editor.main.delete.click();
   await editor.main.table.expectToHaveRowCount(3);

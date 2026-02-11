@@ -52,7 +52,6 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<PersistenceData
   const { t } = useTranslation();
   const { data, setData, setSelectedIndex } = useAppContext();
   const [name, setName] = useState('');
-  const [dataSource, setDataSource] = useState('');
   const nameValidationMessage = useValidateName(name, data);
   const allInputsValid = !nameValidationMessage;
 
@@ -60,12 +59,11 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<PersistenceData
     if (!allInputsValid) {
       return;
     }
-    setData(old => [...old, { id: name.trim(), name, dataSource, excludeUnlistedClasses: false, managedClasses: [], properties: {} }]);
+    setData(old => [...old, { name, dataSource: '', description: '', excludeUnlistedClasses: false, managedClasses: [], properties: {} }]);
     if (!event.ctrlKey && !event.metaKey) {
       closeDialog();
     } else {
       setName('');
-      setDataSource('');
       nameInputRef.current?.focus();
     }
     selectRow(table, data.length.toString());
@@ -107,9 +105,6 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<PersistenceData
     >
       <BasicField label={t('common.label.name')} message={nameValidationMessage} aria-label={t('common.label.name')}>
         <Input ref={nameInputRef} value={name} onChange={event => setName(event.target.value)} />
-      </BasicField>
-      <BasicField label={t('label.dataSource')} aria-label={t('label.dataSource')}>
-        <Input value={dataSource} onChange={event => setDataSource(event.target.value)} />
       </BasicField>
     </BasicDialogContent>
   );
