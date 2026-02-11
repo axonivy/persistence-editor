@@ -1,5 +1,5 @@
 import type { EditorFileContent, PersistenceContext, PersistenceEditorData, PersistenceSaveDataArgs } from './data/persistence';
-import type { PersistenceActionArgs } from './persistence-protocol';
+import type { PersistenceActionArgs, PersistenceMetaRequestTypes } from './persistence-protocol';
 
 export interface Event<T> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,6 +14,11 @@ export interface PersistenceClient {
   initialize(context: PersistenceContext): Promise<void>;
   data(context: PersistenceContext): Promise<PersistenceEditorData>;
   saveData(saveData: PersistenceSaveDataArgs): Promise<EditorFileContent>;
+
+  meta<TMeta extends keyof PersistenceMetaRequestTypes>(
+    path: TMeta,
+    args: PersistenceMetaRequestTypes[TMeta][0]
+  ): Promise<PersistenceMetaRequestTypes[TMeta][1]>;
 
   action(action: PersistenceActionArgs): void;
 }

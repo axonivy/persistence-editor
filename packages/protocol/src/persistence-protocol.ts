@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import type { EditorFileContent, PersistenceContext, PersistenceEditorData, PersistenceSaveDataArgs } from './data/persistence';
+import type {
+  EditorFileContent,
+  ManagedClassesMeta,
+  PersistenceContext,
+  PersistenceEditorData,
+  PersistenceSaveDataArgs
+} from './data/persistence';
 
 export interface PersistenceActionArgs {
   actionId: 'openUrl';
@@ -7,7 +13,12 @@ export interface PersistenceActionArgs {
   payload: string;
 }
 
-export interface PersistenceRequestTypes {
+export interface PersistenceMetaRequestTypes {
+  'meta/managedClasses': [PersistenceContext, Array<ManagedClassesMeta>];
+  'meta/dataSources': [PersistenceContext, Array<string>];
+}
+
+export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes {
   initialize: [PersistenceContext, void];
   data: [PersistenceContext, PersistenceEditorData];
   saveData: [PersistenceSaveDataArgs, EditorFileContent];

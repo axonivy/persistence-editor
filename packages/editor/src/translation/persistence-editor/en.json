@@ -11,9 +11,9 @@
     "label": {
       "cancel": "Cancel",
       "details": "Details",
-      "displayName": "Display Name",
       "name": "Name",
-      "remove": "Remove"
+      "remove": "Remove",
+      "value": "Value"
     },
     "message": {
       "errorOccurred": "An error has occurred: {{message}}"
@@ -33,9 +33,14 @@
   },
   "label": {
     "dataSource": "Data Source",
+    "description": "Description",
+    "excludeUnlistedClasses": "Exclude Unlisted Classes",
+    "managedClasses": "Managed Classes",
+    "noManagedClassesFound": "No Managed Classes Found",
     "noPersistenceSelected": "No Persistence Selected",
-    "noPersistencesFound": "No Persistences Found",
-    "parentPersistence": "Parent Persistence"
+    "persistences": "Persistences",
+    "properties": "Properties",
+    "removeRow": "Remove Row"
   },
   "message": {
     "addFirstPersistence": "Add your first persistence to get started",

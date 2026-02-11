@@ -4,10 +4,38 @@ import { customRenderHook } from 'test-utils';
 import { useValidateName } from './useValidateName';
 
 const data: Array<PersistenceData> = [
-  { id: 'Employee', name: 'Employee', dataSource: 'Employee', excludeUnlistedClasses: false, managedClasses: [], properties: {} },
-  { id: 'Teamleader', name: 'Teamleader', dataSource: 'Teamleader', excludeUnlistedClasses: false, managedClasses: [], properties: {} },
-  { id: 'Manager', name: 'Manager', dataSource: 'Manager', excludeUnlistedClasses: false, managedClasses: [], properties: {} },
-  { id: 'HR Manager', name: 'HR Manager', dataSource: 'HR Manager', excludeUnlistedClasses: false, managedClasses: [], properties: {} }
+  {
+    name: 'Employee',
+    description: 'Employee persistence unit',
+    dataSource: 'hr-db',
+    excludeUnlistedClasses: false,
+    managedClasses: [],
+    properties: {}
+  },
+  {
+    name: 'Teamleader',
+    description: 'Teamleader persistence unit',
+    dataSource: 'hr-db',
+    excludeUnlistedClasses: false,
+    managedClasses: [],
+    properties: {}
+  },
+  {
+    name: 'Manager',
+    description: 'Manager persistence unit',
+    dataSource: 'hr-db',
+    excludeUnlistedClasses: false,
+    managedClasses: [],
+    properties: {}
+  },
+  {
+    name: 'HR Manager',
+    description: 'HR manager persistence unit',
+    dataSource: 'hr-db',
+    excludeUnlistedClasses: false,
+    managedClasses: [],
+    properties: {}
+  }
 ];
 
 const validate = (name: string) => {

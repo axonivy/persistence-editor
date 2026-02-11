@@ -47,11 +47,21 @@ export class PersistenceClientJsonRpc extends BaseRpcClient implements Persisten
     return this.sendRequest('saveData', { ...saveData });
   }
 
+  meta<TMeta extends keyof PersistenceRequestTypes>(
+    path: TMeta,
+    args: PersistenceRequestTypes[TMeta][0]
+  ): Promise<PersistenceRequestTypes[TMeta][1]> {
+    return this.sendRequest(path, args);
+  }
+
   action(action: PersistenceActionArgs): void {
     void this.sendNotification('action', action);
   }
 
-  sendRequest<K extends keyof PersistenceRequestTypes>(command: K, args?: PersistenceRequestTypes[K][0]): Promise<PersistenceRequestTypes[K][1]> {
+  sendRequest<K extends keyof PersistenceRequestTypes>(
+    command: K,
+    args?: PersistenceRequestTypes[K][0]
+  ): Promise<PersistenceRequestTypes[K][1]> {
     return args === undefined ? this.connection.sendRequest(command) : this.connection.sendRequest(command, args);
   }
 
@@ -59,7 +69,10 @@ export class PersistenceClientJsonRpc extends BaseRpcClient implements Persisten
     return this.connection.sendNotification(command, args);
   }
 
-  onNotification<K extends keyof PersistenceOnNotificationTypes>(kind: K, listener: (args: PersistenceOnNotificationTypes[K]) => unknown): Disposable {
+  onNotification<K extends keyof PersistenceOnNotificationTypes>(
+    kind: K,
+    listener: (args: PersistenceOnNotificationTypes[K]) => unknown
+  ): Disposable {
     return this.connection.onNotification(kind, listener);
   }
 

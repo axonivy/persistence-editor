@@ -11,9 +11,9 @@
     "label": {
       "cancel": "Abbrechen",
       "details": "Details",
-      "displayName": "Anzeigename",
       "name": "Name",
-      "remove": "Entfernen"
+      "remove": "Entfernen",
+      "value": "Wert"
     },
     "message": {
       "errorOccurred": "Ein Fehler ist aufgetreten: {{message}}"
@@ -32,10 +32,15 @@
     "deletePersistence": "Persistenz löschen ({{hotkey}})"
   },
   "label": {
-    "memberPersistences": "Mitglieder",
+    "dataSource": "Datenquelle",
+    "description": "Beschreibung",
+    "excludeUnlistedClasses": "Nicht aufgelistete Klassen ausschließen",
+    "managedClasses": "Verwaltete Klassen",
+    "noManagedClassesFound": "Keine verwalteten Klassen gefunden",
     "noPersistenceSelected": "Keine Persistenz ausgewählt",
-    "noPersistencesFound": "Keine Persistenzen gefunden",
-    "parentPersistence": "Übergeordnete Persistenz"
+    "persistences": "Persistenzen",
+    "properties": "Eigenschaften",
+    "removeRow": "Zeile entfernen"
   },
   "message": {
     "addFirstPersistence": "Fügen Sie Ihre erste Persistenz hinzu, um zu beginnen",
