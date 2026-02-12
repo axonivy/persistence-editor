@@ -21,15 +21,15 @@
   },
   "dialog": {
     "addPersistence": {
-      "desc": "Add a new persistence.",
-      "title": "Add Persistence"
+      "desc": "Add a new persistence unit.",
+      "title": "Add Persistence Unit"
     },
     "create": "Create",
-    "createTooltip": "Hold {{modifier}} to add an additional Persistence."
+    "createTooltip": "Hold {{modifier}} to add an additional persistence unit."
   },
   "hotkey": {
-    "addPersistence": "Add Persistence ({{hotkey}})",
-    "deletePersistence": "Delete Persistence ({{hotkey}})"
+    "addPersistence": "Add Persistence Unit ({{hotkey}})",
+    "deletePersistence": "Delete Persistence Unit ({{hotkey}})"
   },
   "label": {
     "dataSource": "Data Source",
@@ -37,20 +37,20 @@
     "excludeUnlistedClasses": "Exclude Unlisted Classes",
     "managedClasses": "Managed Classes",
     "noManagedClassesFound": "No Managed Classes Found",
-    "noPersistenceSelected": "No Persistence Selected",
-    "persistences": "Persistences",
+    "noPersistenceSelected": "No Persistence Unit Selected",
+    "persistenceUnits": "Persistence Units",
     "properties": "Properties",
     "removeRow": "Remove Row"
   },
   "message": {
-    "addFirstPersistence": "Add your first persistence to get started",
+    "addFirstPersistence": "Add your first persistence unit to get started",
     "emptyName": "Name cannot be empty.",
     "errorOnly": "Error: {{error}}",
     "notFound": "Not Found",
-    "persistenceAlreadyExists": "Persistence already exists."
+    "persistenceAlreadyExists": "Persistence Unit already exists."
   },
   "title": {
-    "detail": "Persistence",
-    "main": "Persistences - {{name}}"
+    "detail": "Persistence Unit",
+    "main": "Persistence Units - {{name}}"
   }
 }

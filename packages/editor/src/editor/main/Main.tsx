@@ -130,7 +130,7 @@ export const Main = () => {
         tabIndex={-1}
         ref={firstElement}
         className='persistence-editor-table-field'
-        label={t('label.persistences')}
+        label={t('label.persistenceUnits')}
         control={
           <Controls table={table} deletePersistence={table.getSelectedRowModel().flatRows.length > 0 ? deletePersistence : undefined} />
         }

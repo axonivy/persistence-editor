@@ -21,15 +21,15 @@
   },
   "dialog": {
     "addPersistence": {
-      "desc": "Eine neue Persistenz hinzufügen.",
-      "title": "Persistenz hinzufügen"
+      "desc": "Eine neue Persistenzeinheit hinzufügen.",
+      "title": "Persistenzeinheit hinzufügen"
     },
     "create": "Erstellen",
-    "createTooltip": "Halte {{modifier}} gedrückt, um eine weitere Persistenz hinzuzufügen."
+    "createTooltip": "Halte {{modifier}} gedrückt, um eine weitere Persistenzeinheit hinzuzufügen."
   },
   "hotkey": {
-    "addPersistence": "Persistenz hinzufügen ({{hotkey}})",
-    "deletePersistence": "Persistenz löschen ({{hotkey}})"
+    "addPersistence": "Persistenzeinheit hinzufügen ({{hotkey}})",
+    "deletePersistence": "Persistenzeinheit löschen ({{hotkey}})"
   },
   "label": {
     "dataSource": "Datenquelle",
@@ -37,20 +37,20 @@
     "excludeUnlistedClasses": "Nicht aufgelistete Klassen ausschließen",
     "managedClasses": "Verwaltete Klassen",
     "noManagedClassesFound": "Keine verwalteten Klassen gefunden",
-    "noPersistenceSelected": "Keine Persistenz ausgewählt",
-    "persistences": "Persistenzen",
+    "noPersistenceSelected": "Keine Persistenzeinheit ausgewählt",
+    "persistenceUnits": "Persistenzeinheiten",
     "properties": "Eigenschaften",
     "removeRow": "Zeile entfernen"
   },
   "message": {
-    "addFirstPersistence": "Fügen Sie Ihre erste Persistenz hinzu, um zu beginnen",
+    "addFirstPersistence": "Fügen Sie Ihre erste Persistenzeinheit hinzu, um zu beginnen",
     "emptyName": "Name darf nicht leer sein.",
     "errorOnly": "Fehler: {{error}}",
     "notFound": "Nicht gefunden",
-    "persistenceAlreadyExists": "Persistenz existiert bereits."
+    "persistenceAlreadyExists": "Persistenzeinheit existiert bereits."
   },
   "title": {
-    "detail": "Persistenz",
-    "main": "Persistenzen - {{name}}"
+    "detail": "Persistenzeinheit",
+    "main": "Persistenzeinheiten - {{name}}"
   }
 }

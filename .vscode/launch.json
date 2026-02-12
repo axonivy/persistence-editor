@@ -8,7 +8,7 @@
       "name": "Launch Standalone (Chrome)",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:3000/?server=localhost:8080/~Developer-persistence-test-project&app=Developer-persistence-test-project&pmv=persistence-test-project&file=config/persistence.yaml&directSave",
+      "url": "http://localhost:3000/?server=localhost:8080/~Developer-persistence-test-project&app=Developer-persistence-test-project&pmv=persistence-test-project&file=config/persistence.xml&directSave",
       "presentation": {
         "group": "4. Standalone",
         "order": 1

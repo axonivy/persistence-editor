@@ -3,10 +3,10 @@ import type { MessageData } from '@axonivy/ui-components';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const useValidateName = (name: string, persistences: Array<PersistenceData>) => {
+export const useValidateName = (name: string, persistenceUnits: Array<PersistenceData>) => {
   const { t } = useTranslation();
   return useMemo<MessageData | undefined>(() => {
-    switch (validateName(name, persistences)) {
+    switch (validateName(name, persistenceUnits)) {
       case 'emptyName':
         return toErrorMessage(t('message.emptyName'));
       case 'persistenceAlreadyExists':
@@ -14,15 +14,15 @@ export const useValidateName = (name: string, persistences: Array<PersistenceDat
       default:
         return;
     }
-  }, [name, persistences, t]);
+  }, [name, persistenceUnits, t]);
 };
 
-export const validateName = (name: string, persistences: Array<PersistenceData>) => {
+export const validateName = (name: string, persistenceUnits: Array<PersistenceData>) => {
   const trimmedName = name.trim();
   if (trimmedName === '') {
     return 'emptyName';
   }
-  if (persistences.map(persistence => persistence.name).includes(trimmedName)) {
+  if (persistenceUnits.map(persistence => persistence.name).includes(trimmedName)) {
     return 'persistenceAlreadyExists';
   }
   return undefined;

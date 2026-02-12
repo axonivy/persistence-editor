@@ -7,22 +7,22 @@ import { useValidateName, validateName } from '../../../hooks/useValidateName';
 type NameInputProps = {
   value: string;
   onChange: (change: string) => void;
-  persistences: PersistenceData[];
+  persistenceUnits: PersistenceData[];
   message?: MessageData;
 };
 
-export const NameInput = ({ value, onChange, persistences, message }: NameInputProps) => {
+export const NameInput = ({ value, onChange, persistenceUnits, message }: NameInputProps) => {
   const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState(value ?? '');
   const [prevValue, setPrevValue] = useState(value);
-  const nameValidationMessage = useValidateName(currentValue, persistences);
+  const nameValidationMessage = useValidateName(currentValue, persistenceUnits);
   if (value !== undefined && prevValue !== value) {
     setCurrentValue(value);
     setPrevValue(value);
   }
   const updateValue = (value: string) => {
     setCurrentValue(value);
-    if (validateName(value, persistences) === undefined) {
+    if (validateName(value, persistenceUnits) === undefined) {
       onChange?.(value);
     }
   };
