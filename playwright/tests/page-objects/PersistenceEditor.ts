@@ -25,7 +25,7 @@ export class PersistenceEditor {
 
   static async openPersistence(page: Page, options?: { readonly?: boolean; theme?: string }) {
     const serverUrl = server.replace(/^https?:\/\//, '');
-    let url = `?server=${serverUrl}${ws}&app=${app}&pmv=${pmv}&file=config/persistence.yaml`;
+    let url = `?server=${serverUrl}${ws}&app=${app}&pmv=${pmv}&file=config/persistence.xml`;
     if (options) {
       url += Object.entries(options)
         .map(([key, value]) => `&${key}=${value}`)

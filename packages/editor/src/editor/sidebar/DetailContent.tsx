@@ -31,7 +31,7 @@ export const DetailContent = () => {
       <NameInput
         value={persistence.name}
         onChange={value => handleAttributeChange('name', value)}
-        persistences={data.filter(u => u.name !== persistence.name)}
+        persistenceUnits={data.filter(u => u.name !== persistence.name)}
       />
       <BasicField label={t('label.description')}>
         <BasicInput value={persistence.description} onChange={event => handleAttributeChange('description', event.target.value)} />

@@ -48,7 +48,7 @@ test('validate', () => {
   const emptyError = { message: 'Name cannot be empty.', variant: 'error' };
   expect(validate('')).toEqual(emptyError);
   expect(validate('   ')).toEqual(emptyError);
-  const alreadyExistError = { message: 'Persistence already exists.', variant: 'error' };
+  const alreadyExistError = { message: 'Persistence Unit already exists.', variant: 'error' };
   expect(validate('Employee')).toEqual(alreadyExistError);
   expect(validate('Teamleader    ')).toEqual(alreadyExistError);
 });

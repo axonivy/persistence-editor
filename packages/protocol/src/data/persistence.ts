@@ -5,15 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Severity = ("INFO" | "WARNING" | "ERROR")
-
 export interface Persistence {
-  boolean: boolean;
-  editorFileContent: EditorFileContent;
-  persistenceContext: PersistenceContext;
-  persistenceEditorData: PersistenceEditorData;
-  persistenceSaveDataArgs: PersistenceSaveDataArgs;
-  [k: string]: unknown;
+boolean: boolean
+editorFileContent: EditorFileContent
+managedClassesMeta: ManagedClassesMeta[]
+persistenceContext: PersistenceContext
+persistenceEditorData: PersistenceEditorData
+persistenceSaveDataArgs: PersistenceSaveDataArgs
+string: string[]
+[k: string]: unknown
 }
 export interface EditorFileContent {
   content: string;
@@ -34,18 +34,18 @@ export interface PersistenceEditorData {
   readonly: boolean;
 }
 export interface PersistenceData {
-  name: string;
-  description: string;
   dataSource: string;
+  description: string;
   excludeUnlistedClasses: boolean;
   managedClasses: string[];
+  name: string;
   properties: MapStringString;
+}
+export interface MapStringString {
+  [k: string]: string;
 }
 export interface PersistenceSaveDataArgs {
   context: PersistenceContext;
   data: PersistenceData[];
   directSave: boolean;
-}
-export interface MapStringString {
-  [k: string]: string;
 }
