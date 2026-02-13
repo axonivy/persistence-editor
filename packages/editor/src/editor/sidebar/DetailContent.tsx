@@ -1,11 +1,21 @@
 import type { PersistenceData } from '@axonivy/persistence-editor-protocol';
-import { BasicCheckbox, BasicField, BasicInput, BasicSelect, Flex, PanelMessage } from '@axonivy/ui-components';
+import {
+  BasicCheckbox,
+  BasicField,
+  BasicInput,
+  BasicSelect,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+  Flex,
+  PanelMessage
+} from '@axonivy/ui-components';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useMeta } from '../../hooks/useMeta';
 import './DetailContent.css';
-import ManagedClassesCombobox from './components/ManagedClassesCombobox';
+import { ManagedClassesSelect } from './components/ManagedClassesSelect';
 import { NameInput } from './components/NameInput';
 import { PropertiesTable } from './components/PropertiesTable';
 
@@ -28,31 +38,42 @@ export const DetailContent = () => {
 
   return (
     <Flex direction='column' gap={4} className='persistence-editor-detail-content'>
-      <NameInput
-        value={persistence.name}
-        onChange={value => handleAttributeChange('name', value)}
-        persistenceUnits={data.filter(u => u.name !== persistence.name)}
-      />
-      <BasicField label={t('label.description')}>
-        <BasicInput value={persistence.description} onChange={event => handleAttributeChange('description', event.target.value)} />
-      </BasicField>
-      <BasicField label={t('label.dataSource')}>
-        <BasicSelect
-          value={persistence.dataSource}
-          emptyItem={true}
-          items={dataSources.map(source => ({ label: source, value: source }))}
-          onValueChange={value => handleAttributeChange('dataSource', value)}
-        />
-      </BasicField>
-
-      <BasicCheckbox
-        label={t('label.excludeUnlistedClasses')}
-        checked={persistence.excludeUnlistedClasses}
-        onCheckedChange={checked => handleAttributeChange('excludeUnlistedClasses', checked === true)}
-      />
-      <BasicField label={t('label.managedClasses')}>
-        <ManagedClassesCombobox value={persistence.managedClasses} onChange={value => handleAttributeChange('managedClasses', value)} />
-      </BasicField>
+      <Collapsible defaultOpen={true}>
+        <CollapsibleTrigger>{t('common.label.general')}</CollapsibleTrigger>
+        <CollapsibleContent>
+          <Flex direction='column' gap={4}>
+            <NameInput
+              value={persistence.name}
+              onChange={value => handleAttributeChange('name', value)}
+              persistenceUnits={data.filter(u => u.name !== persistence.name)}
+            />
+            <BasicField label={t('label.description')}>
+              <BasicInput value={persistence.description} onChange={event => handleAttributeChange('description', event.target.value)} />
+            </BasicField>
+            <BasicField label={t('label.dataSource')}>
+              <BasicSelect
+                value={persistence.dataSource}
+                emptyItem={true}
+                items={dataSources.map(source => ({ label: source, value: source }))}
+                onValueChange={value => handleAttributeChange('dataSource', value)}
+              />
+            </BasicField>
+          </Flex>
+        </CollapsibleContent>
+      </Collapsible>
+      <Collapsible defaultOpen={true}>
+        <CollapsibleTrigger>{t('label.managedClasses')}</CollapsibleTrigger>
+        <CollapsibleContent>
+          <Flex direction='column' gap={3}>
+            <ManagedClassesSelect value={persistence.managedClasses} onChange={value => handleAttributeChange('managedClasses', value)} />
+            <BasicCheckbox
+              label={t('label.excludeUnlistedClasses')}
+              checked={persistence.excludeUnlistedClasses}
+              onCheckedChange={checked => handleAttributeChange('excludeUnlistedClasses', checked === true)}
+            />
+          </Flex>
+        </CollapsibleContent>
+      </Collapsible>
       <PropertiesTable
         key={persistence.name}
         data={Object.entries(persistence.properties || {}).map(([key, value]) => ({ key, value }))}

@@ -1,8 +1,8 @@
 import { type Locator, type Page } from '@playwright/test';
 import { Checkbox } from './components/Checkbox';
-import { Combobox } from './components/Combobox';
 import { Select } from './components/Select';
 import { Table } from './components/Table';
+import { Tags } from './components/Tags';
 import { Textbox } from './components/Textbox';
 
 export class Detail {
@@ -13,7 +13,7 @@ export class Detail {
   readonly content: Locator;
   readonly name: Textbox;
   readonly dataSource: Select;
-  readonly managedClasses: Combobox;
+  readonly managedClasses: Tags;
   readonly description: Textbox;
   readonly excludeUnlistedClasses: Checkbox;
   readonly properties: Table;
@@ -28,7 +28,7 @@ export class Detail {
     this.description = new Textbox(this.locator, { name: 'Description' });
     this.dataSource = new Select(page, this.locator, { name: 'Data Source' });
     this.excludeUnlistedClasses = new Checkbox(page, this.locator, 'Exclude unlisted classes');
-    this.managedClasses = new Combobox(page, this.locator, { name: 'Managed Classes' });
+    this.managedClasses = new Tags(page, this.locator);
     this.properties = new Table(page, this.locator);
   }
 }

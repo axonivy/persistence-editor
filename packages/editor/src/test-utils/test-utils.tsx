@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
-  type ManagedClassesMeta,
+  type DataclassType,
   type PersistenceContext,
   type PersistenceData,
   type PersistenceMetaRequestTypes
@@ -24,7 +24,7 @@ type ContextHelperProps = {
   };
   readonly?: boolean;
   meta?: {
-    managedClasses?: Array<ManagedClassesMeta>;
+    dataClasses?: Array<DataclassType>;
   };
 };
 
@@ -48,8 +48,8 @@ const ContextHelper = ({ appContext, readonly, meta, children }: ContextHelperPr
     client: {
       meta<TMeta extends keyof PersistenceMetaRequestTypes>(path: TMeta): Promise<PersistenceMetaRequestTypes[TMeta][1]> {
         switch (path) {
-          case 'meta/managedClasses':
-            return Promise.resolve(meta?.managedClasses ?? []);
+          case 'meta/scripting/dataClasses':
+            return Promise.resolve(meta?.dataClasses ?? []);
 
           default:
             throw Error('mock meta path not programmed');

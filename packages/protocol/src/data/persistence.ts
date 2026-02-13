@@ -7,20 +7,29 @@
 
 export interface Persistence {
 boolean: boolean
+dataclassType: DataclassType[]
 editorFileContent: EditorFileContent
-managedClassesMeta: ManagedClassesMeta[]
+javaType: JavaType[]
 persistenceContext: PersistenceContext
 persistenceEditorData: PersistenceEditorData
 persistenceSaveDataArgs: PersistenceSaveDataArgs
 string: string[]
+typeSearchRequest: TypeSearchRequest
 [k: string]: unknown
+}
+export interface DataclassType {
+  fullQualifiedName: string;
+  name: string;
+  packageName: string;
+  path: string;
 }
 export interface EditorFileContent {
   content: string;
 }
-export interface ManagedClassesMeta {
-  id: string;
-  label: string;
+export interface JavaType {
+  fullQualifiedName: string;
+  packageName: string;
+  simpleName: string;
 }
 export interface PersistenceContext {
   app: string;
@@ -48,4 +57,9 @@ export interface PersistenceSaveDataArgs {
   context: PersistenceContext;
   data: PersistenceData[];
   directSave: boolean;
+}
+export interface TypeSearchRequest {
+  context: PersistenceContext;
+  limit: number;
+  type: string;
 }

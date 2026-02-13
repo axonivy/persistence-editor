@@ -3,6 +3,7 @@
     <persistence-unit name="CoreBusinessPU">
         <description>Primary transactional database for core business operations</description>
         <non-jta-data-source>CoreDB</non-jta-data-source>
+        <class>DateTime</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
@@ -12,6 +13,7 @@
     <persistence-unit name="ReportingPU">
         <description>Read-optimized reporting and analytics database</description>
         <non-jta-data-source>ReportingDB</non-jta-data-source>
+        <class>persistence.test.project.SomeCustomeClass</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="org.hibernate.dialect.H2Dialect"/>
