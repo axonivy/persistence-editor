@@ -1,0 +1,39 @@
+.tags {
+  display: flex;
+  gap: var(--size-1);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.added-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-1);
+  background: var(--background);
+  border-radius: 1rem;
+  padding: 3px 6px;
+  border: var(--basic-border);
+}
+
+.tag-remove {
+  all: unset;
+  display: flex;
+  flex: 1;
+  cursor: pointer;
+}
+
+.tag-remove:disabled {
+  cursor: not-allowed;
+}
+
+.tag-remove .ivy {
+  color: var(--N500);
+  text-align: center;
+  font-size: 18px;
+  line-height: 12px;
+}
+
+.tag-remove:focus-visible {
+  box-shadow: var(--focus-shadow);
+}

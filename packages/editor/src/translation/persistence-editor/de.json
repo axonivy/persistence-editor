@@ -1,4 +1,11 @@
 {
+  "browser": {
+    "dataClasses": "Datenklassen",
+    "ivyScriptTypes": "Ivy Script Datentypen",
+    "ownTypes": "Eigene Typen",
+    "searchAllTypes": "Suche über alle Typen",
+    "typeAsList": "Typ als Liste"
+  },
   "common": {
     "hotkey": {
       "focusInscription": "Fokus Detailansicht ({{hotkey}})",
@@ -9,10 +16,13 @@
       "undo": "Rückgängig ({{hotkey}})"
     },
     "label": {
+      "apply": "Anwenden",
       "cancel": "Abbrechen",
       "details": "Details",
+      "general": "Allgemein",
+      "info": "Info",
       "name": "Name",
-      "remove": "Entfernen",
+      "search": "Suche",
       "value": "Wert"
     },
     "message": {
@@ -25,22 +35,28 @@
       "title": "Persistenzeinheit hinzufügen"
     },
     "create": "Erstellen",
-    "createTooltip": "Halte {{modifier}} gedrückt, um eine weitere Persistenzeinheit hinzuzufügen."
+    "createTooltip": "Halte {{modifier}} gedrückt, um eine weitere Persistenzeinheit hinzuzufügen.",
+    "typeBrowser": {
+      "description": "Durchsuchen und Auswählen von Typen für Ihre Persistenzeinheit.",
+      "title": "Typ Browser"
+    }
   },
   "hotkey": {
     "addPersistence": "Persistenzeinheit hinzufügen ({{hotkey}})",
     "deletePersistence": "Persistenzeinheit löschen ({{hotkey}})"
   },
   "label": {
+    "addManagedClass": "Verwaltete Klasse hinzufügen",
     "dataSource": "Datenquelle",
     "description": "Beschreibung",
     "excludeUnlistedClasses": "Nicht aufgelistete Klassen ausschließen",
     "managedClasses": "Verwaltete Klassen",
-    "noManagedClassesFound": "Keine verwalteten Klassen gefunden",
     "noPersistenceSelected": "Keine Persistenzeinheit ausgewählt",
     "persistenceUnits": "Persistenzeinheiten",
     "properties": "Eigenschaften",
-    "removeRow": "Zeile entfernen"
+    "removeManagedClass": "Verwaltete Klasse entfernen",
+    "removeRow": "Zeile entfernen",
+    "type": "Typ"
   },
   "message": {
     "addFirstPersistence": "Fügen Sie Ihre erste Persistenzeinheit hinzu, um zu beginnen",

@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
 import type {
+  DataclassType,
   EditorFileContent,
-  ManagedClassesMeta,
+  JavaType,
   PersistenceContext,
   PersistenceEditorData,
-  PersistenceSaveDataArgs
+  PersistenceSaveDataArgs,
+  TypeSearchRequest
 } from './data/persistence';
 
 export interface PersistenceActionArgs {
@@ -14,8 +16,11 @@ export interface PersistenceActionArgs {
 }
 
 export interface PersistenceMetaRequestTypes {
-  'meta/managedClasses': [PersistenceContext, Array<ManagedClassesMeta>];
   'meta/dataSources': [PersistenceContext, Array<string>];
+  'meta/scripting/dataClasses': [PersistenceContext, Array<DataclassType>];
+  'meta/scripting/ivyTypes': [void, Array<JavaType>];
+  'meta/scripting/allTypes': [TypeSearchRequest, Array<JavaType>];
+  'meta/scripting/ownTypes': [TypeSearchRequest, Array<JavaType>];
 }
 
 export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes {

@@ -1,4 +1,11 @@
 {
+  "browser": {
+    "dataClasses": "Data Classes",
+    "ivyScriptTypes": "Ivy Script Data Types",
+    "ownTypes": "Own Types",
+    "searchAllTypes": "Search over all types",
+    "typeAsList": "Type as List"
+  },
   "common": {
     "hotkey": {
       "focusInscription": "Focus Inscription ({{hotkey}})",
@@ -9,10 +16,13 @@
       "undo": "Undo ({{hotkey}})"
     },
     "label": {
+      "apply": "Apply",
       "cancel": "Cancel",
       "details": "Details",
+      "general": "General",
+      "info": "Info",
       "name": "Name",
-      "remove": "Remove",
+      "search": "Search",
       "value": "Value"
     },
     "message": {
@@ -25,22 +35,28 @@
       "title": "Add Persistence Unit"
     },
     "create": "Create",
-    "createTooltip": "Hold {{modifier}} to add an additional persistence unit."
+    "createTooltip": "Hold {{modifier}} to add an additional persistence unit.",
+    "typeBrowser": {
+      "description": "Browse and select types for your persistence unit.",
+      "title": "Type Browser"
+    }
   },
   "hotkey": {
     "addPersistence": "Add Persistence Unit ({{hotkey}})",
     "deletePersistence": "Delete Persistence Unit ({{hotkey}})"
   },
   "label": {
+    "addManagedClass": "Add Managed Class",
     "dataSource": "Data Source",
     "description": "Description",
     "excludeUnlistedClasses": "Exclude Unlisted Classes",
     "managedClasses": "Managed Classes",
-    "noManagedClassesFound": "No Managed Classes Found",
     "noPersistenceSelected": "No Persistence Unit Selected",
     "persistenceUnits": "Persistence Units",
     "properties": "Properties",
-    "removeRow": "Remove Row"
+    "removeManagedClass": "Remove Managed Class",
+    "removeRow": "Remove Row",
+    "type": "Type"
   },
   "message": {
     "addFirstPersistence": "Add your first persistence unit to get started",
