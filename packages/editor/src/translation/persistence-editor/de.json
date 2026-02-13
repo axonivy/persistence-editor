@@ -11,6 +11,7 @@
     "label": {
       "cancel": "Abbrechen",
       "details": "Details",
+      "general": "Allgemein",
       "name": "Name",
       "remove": "Entfernen",
       "value": "Wert"

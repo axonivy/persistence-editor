@@ -11,6 +11,7 @@
     "label": {
       "cancel": "Cancel",
       "details": "Details",
+      "general": "General",
       "name": "Name",
       "remove": "Remove",
       "value": "Value"
@@ -36,7 +37,7 @@
     "description": "Description",
     "excludeUnlistedClasses": "Exclude Unlisted Classes",
     "managedClasses": "Managed Classes",
-    "noManagedClassesFound": "No Managed Classes Found",
+    "noManagedClassesFound": "No managed classes found",
     "noPersistenceSelected": "No Persistence Unit Selected",
     "persistenceUnits": "Persistence Units",
     "properties": "Properties",

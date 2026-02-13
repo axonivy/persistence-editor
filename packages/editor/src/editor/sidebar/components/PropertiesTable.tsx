@@ -1,5 +1,7 @@
 import {
-  BasicField,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
   InputCell,
   SelectRow,
   SortableHeader,
@@ -49,24 +51,27 @@ export const PropertiesTable = ({ data, onChange }: PropertiesTableProps) => {
   });
 
   return (
-    <BasicField label={t('label.properties')} control={selectedRowActions()}>
-      <div>
-        <Table ref={tableRef}>
-          <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={() => setRowSelection({})} />
-          <TableBody>
-            {table.getRowModel().rows.map(row => (
-              <SelectRow key={row.id} row={row}>
-                {row.getVisibleCells().map(cell => (
-                  <TableCell key={cell.id} style={{ width: cell.column.getSize() }}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </SelectRow>
-            ))}
-          </TableBody>
-        </Table>
-        {showAddButton()}
-      </div>
-    </BasicField>
+    <Collapsible defaultOpen={true}>
+      <CollapsibleTrigger control={selectedRowActions}>{t('label.properties')}</CollapsibleTrigger>
+      <CollapsibleContent>
+        <div>
+          <Table ref={tableRef}>
+            <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={() => setRowSelection({})} />
+            <TableBody>
+              {table.getRowModel().rows.map(row => (
+                <SelectRow key={row.id} row={row}>
+                  {row.getVisibleCells().map(cell => (
+                    <TableCell key={cell.id} style={{ width: cell.column.getSize() }}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </SelectRow>
+              ))}
+            </TableBody>
+          </Table>
+          {showAddButton()}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };

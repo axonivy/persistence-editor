@@ -7,7 +7,7 @@ import type {
   PersistenceSaveDataArgs
 } from '@axonivy/persistence-editor-protocol';
 import { data } from './data-mock';
-import { DATASOURCES, MANAGED_CLASSES } from './meta-mock';
+import { DATACLASSES, DATASOURCES } from './meta-mock';
 
 export class PersistenceClientMock implements PersistenceClient {
   private persistenceData: PersistenceEditorData;
@@ -39,8 +39,8 @@ export class PersistenceClientMock implements PersistenceClient {
   ): Promise<PersistenceMetaRequestTypes[TMeta][1]> {
     console.log('Meta:', args);
     switch (path) {
-      case 'meta/managedClasses':
-        return Promise.resolve(MANAGED_CLASSES);
+      case 'meta/scripting/entityClasses':
+        return Promise.resolve(DATACLASSES);
       case 'meta/dataSources':
         return Promise.resolve(DATASOURCES);
       default:

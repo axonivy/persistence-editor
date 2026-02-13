@@ -27,7 +27,7 @@ test('edit persistence', async ({ page }) => {
   await editor.detail.description.locator.fill('Updated Description');
   await editor.detail.dataSource.select('FinanceDB');
   await editor.detail.excludeUnlistedClasses.toggle();
-  await editor.detail.managedClasses.select('com.example.ops.Order (Order (Operations))');
+  await editor.detail.managedClasses.select('com.acme.bank.payment.Payment');
   const row = await editor.detail.properties.addRow();
   await row.fill(['newProp', 'newValue']);
   await page.keyboard.press('Escape');
@@ -37,7 +37,7 @@ test('edit persistence', async ({ page }) => {
   await expect(editor.detail.name.locator).toHaveValue('Updated Persistence Unit');
   await expect(editor.detail.description.locator).toHaveValue('Updated Description');
   await expect(editor.detail.dataSource.locator).toHaveText('FinanceDB');
+  await editor.detail.managedClasses.expectToHaveValue('com.example.league.Team,com.example.league.Player,com.example.league.Match,com.acme.bank.payment.Payment');
   await editor.detail.excludeUnlistedClasses.expectValue(true);
-  await editor.detail.managedClasses.expectToHaveValue('com.example.league.Team,com.example.league.Player,com.example.league.Match,com.example.ops.Order');
   await editor.detail.properties.expectToHaveRowValues(['hibernate.hbm2ddl.auto', 'update'], ['newProp', 'newValue']);
 });

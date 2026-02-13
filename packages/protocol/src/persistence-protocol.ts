@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
 import type {
+  DataclassType,
   EditorFileContent,
-  ManagedClassesMeta,
   PersistenceContext,
   PersistenceEditorData,
   PersistenceSaveDataArgs
@@ -14,8 +14,8 @@ export interface PersistenceActionArgs {
 }
 
 export interface PersistenceMetaRequestTypes {
-  'meta/managedClasses': [PersistenceContext, Array<ManagedClassesMeta>];
   'meta/dataSources': [PersistenceContext, Array<string>];
+  'meta/scripting/entityClasses': [PersistenceContext, Array<DataclassType>];
 }
 
 export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes {
