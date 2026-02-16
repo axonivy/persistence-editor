@@ -2,10 +2,12 @@
 import type {
   DataclassType,
   EditorFileContent,
+  GenerateSchemaArgs,
   JavaType,
   PersistenceContext,
   PersistenceEditorData,
   PersistenceSaveDataArgs,
+  Result,
   TypeSearchRequest
 } from './data/persistence';
 
@@ -13,6 +15,10 @@ export interface PersistenceActionArgs {
   actionId: 'openUrl';
   context: PersistenceContext;
   payload: string;
+}
+
+export interface PersistenceFunctionRequestTypes {
+  'function/generateSchema': [GenerateSchemaArgs, Result];
 }
 
 export interface PersistenceMetaRequestTypes {
@@ -23,7 +29,7 @@ export interface PersistenceMetaRequestTypes {
   'meta/scripting/ownTypes': [TypeSearchRequest, Array<JavaType>];
 }
 
-export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes {
+export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes, PersistenceFunctionRequestTypes {
   initialize: [PersistenceContext, void];
   data: [PersistenceContext, PersistenceEditorData];
   saveData: [PersistenceSaveDataArgs, EditorFileContent];

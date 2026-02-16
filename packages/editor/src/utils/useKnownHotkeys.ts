@@ -26,6 +26,11 @@ export const useKnownHotkeys = () => {
     return { hotkey, label: t('hotkey.addPersistence', { hotkey: hotkeyText(hotkey) }) };
   }, [t]);
 
+  const generateSchema = useMemo<KnownHotkey>(() => {
+    const hotkey = 'S';
+    return { hotkey, label: t('hotkey.generateSchema', { hotkey: hotkeyText(hotkey) }) };
+  }, [t]);
+
   const deletePersistence = useMemo<KnownHotkey>(() => {
     const hotkey = 'Delete';
     return { hotkey, label: t('hotkey.deletePersistence', { hotkey: hotkeyText(hotkey) }) };
@@ -46,5 +51,5 @@ export const useKnownHotkeys = () => {
     return { hotkey, label: t('common.hotkey.focusInscription', { hotkey: hotkeyText(hotkey) }) };
   }, [t]);
 
-  return { undo, redo, openHelp, addPersistence, deletePersistence, focusToolbar, focusMain, focusInscription };
+  return { undo, redo, openHelp, addPersistence, generateSchema, deletePersistence, focusToolbar, focusMain, focusInscription };
 };

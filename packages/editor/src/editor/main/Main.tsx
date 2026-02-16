@@ -32,6 +32,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useKnownHotkeys } from '../../utils/useKnownHotkeys';
 import { AddPersistenceDialog } from '../dialog/AddPersistenceDialog';
+import { GenerateSchemaDialog } from '../dialog/GenerateSchemaDialog';
 import './Main.css';
 
 export const Main = () => {
@@ -166,6 +167,14 @@ const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceD
   }
   return (
     <Flex gap={2}>
+      <GenerateSchemaDialog selectedPU={table.getSelectedRowModel().flatRows[0]?.original}>
+        <Button
+          icon={IvyIcons.Sql}
+          aria-label={hotkeys.generateSchema.label}
+          disabled={table.getSelectedRowModel().flatRows.length === 0}
+        />
+      </GenerateSchemaDialog>
+      <Separator decorative orientation='vertical' style={{ height: '20px', margin: 0 }} />
       <AddPersistenceDialog table={table}>
         <Button icon={IvyIcons.Plus} aria-label={hotkeys.addPersistence.label} />
       </AddPersistenceDialog>

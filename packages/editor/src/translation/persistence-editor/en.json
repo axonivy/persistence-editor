@@ -34,6 +34,14 @@
       "desc": "Add a new persistence unit.",
       "title": "Add Persistence Unit"
     },
+    "generateSchema": {
+      "desc": "Generate database schema based on your persistence unit configuration.",
+      "title": "Generate Schema",
+      "execute": "Execute Schema",
+      "create": "Create",
+      "update": "Update",
+      "result": "Generated Schema"
+    },
     "create": "Create",
     "createTooltip": "Hold {{modifier}} to add an additional persistence unit.",
     "typeBrowser": {
@@ -43,7 +51,8 @@
   },
   "hotkey": {
     "addPersistence": "Add Persistence Unit ({{hotkey}})",
-    "deletePersistence": "Delete Persistence Unit ({{hotkey}})"
+    "deletePersistence": "Delete Persistence Unit ({{hotkey}})",
+    "generateSchema": "Generate Schema ({{hotkey}})"
   },
   "label": {
     "addManagedClass": "Add Managed Class",

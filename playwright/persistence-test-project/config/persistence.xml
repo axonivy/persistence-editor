@@ -21,4 +21,9 @@
             <property name="hibernate.dialect" value="true"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="MySqlTest">
+        <description></description>
+        <non-jta-data-source>NewMySqlDB</non-jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    </persistence-unit>
 </persistence>

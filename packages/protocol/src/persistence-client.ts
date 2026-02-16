@@ -1,5 +1,5 @@
 import type { EditorFileContent, PersistenceContext, PersistenceEditorData, PersistenceSaveDataArgs } from './data/persistence';
-import type { PersistenceActionArgs, PersistenceMetaRequestTypes } from './persistence-protocol';
+import type { PersistenceActionArgs, PersistenceFunctionRequestTypes, PersistenceMetaRequestTypes } from './persistence-protocol';
 
 export interface Event<T> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,6 +19,10 @@ export interface PersistenceClient {
     path: TMeta,
     args: PersistenceMetaRequestTypes[TMeta][0]
   ): Promise<PersistenceMetaRequestTypes[TMeta][1]>;
+  functions<TFunction extends keyof PersistenceFunctionRequestTypes>(
+    path: TFunction,
+    args: PersistenceFunctionRequestTypes[TFunction][0]
+  ): Promise<PersistenceFunctionRequestTypes[TFunction][1]>;
 
   action(action: PersistenceActionArgs): void;
 }

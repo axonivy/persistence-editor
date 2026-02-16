@@ -10,3 +10,9 @@ Databases:
     Driver: com.mysql.cj.jdbc.Driver
     Password: ${decrypt:}
     MaxConnections: 5
+  NewMySqlDB:
+    Url: jdbc:mysql://localhost:3306/mydatabase
+    Driver: com.mysql.cj.jdbc.Driver
+    UserName: admin
+    Password: ${decrypt:mcGu8OB3Afcu6dj3lt4dLQ==}
+    MaxConnections: 5

@@ -14,6 +14,7 @@ import type {
   PersistenceClient,
   PersistenceContext,
   PersistenceEditorData,
+  PersistenceFunctionRequestTypes,
   PersistenceNotificationTypes,
   PersistenceOnNotificationTypes,
   PersistenceRequestTypes,
@@ -51,6 +52,13 @@ export class PersistenceClientJsonRpc extends BaseRpcClient implements Persisten
     path: TMeta,
     args: PersistenceRequestTypes[TMeta][0]
   ): Promise<PersistenceRequestTypes[TMeta][1]> {
+    return this.sendRequest(path, args);
+  }
+
+  functions<TFunction extends keyof PersistenceFunctionRequestTypes>(
+    path: TFunction,
+    args: PersistenceFunctionRequestTypes[TFunction][0]
+  ): Promise<PersistenceFunctionRequestTypes[TFunction][1]> {
     return this.sendRequest(path, args);
   }
 

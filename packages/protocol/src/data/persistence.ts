@@ -5,17 +5,21 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type GenerationType = ("UPDATE" | "CREATE")
+
 export interface Persistence {
-boolean: boolean
-dataclassType: DataclassType[]
-editorFileContent: EditorFileContent
-javaType: JavaType[]
-persistenceContext: PersistenceContext
-persistenceEditorData: PersistenceEditorData
-persistenceSaveDataArgs: PersistenceSaveDataArgs
-string: string[]
-typeSearchRequest: TypeSearchRequest
-[k: string]: unknown
+  boolean: boolean;
+  dataclassType: DataclassType[];
+  editorFileContent: EditorFileContent;
+  generateSchemaArgs: GenerateSchemaArgs;
+  javaType: JavaType[];
+  persistenceContext: PersistenceContext;
+  persistenceEditorData: PersistenceEditorData;
+  persistenceSaveDataArgs: PersistenceSaveDataArgs;
+  result: Result;
+  string: string[];
+  typeSearchRequest: TypeSearchRequest;
+  [k: string]: unknown;
 }
 export interface DataclassType {
   fullQualifiedName: string;
@@ -26,21 +30,14 @@ export interface DataclassType {
 export interface EditorFileContent {
   content: string;
 }
-export interface JavaType {
-  fullQualifiedName: string;
-  packageName: string;
-  simpleName: string;
-}
-export interface PersistenceContext {
-  app: string;
-  file: string;
-  pmv: string;
-}
-export interface PersistenceEditorData {
+export interface GenerateSchemaArgs {
+  config: GenerationConfig;
   context: PersistenceContext;
-  data: PersistenceData[];
-  helpUrl: string;
-  readonly: boolean;
+}
+export interface GenerationConfig {
+  data: PersistenceData;
+  generationType: GenerationType;
+  preview: boolean;
 }
 export interface PersistenceData {
   dataSource: string;
@@ -53,10 +50,46 @@ export interface PersistenceData {
 export interface MapStringString {
   [k: string]: string;
 }
+export interface PersistenceContext {
+  app: string;
+  file: string;
+  pmv: string;
+}
+export interface JavaType {
+  fullQualifiedName: string;
+  packageName: string;
+  simpleName: string;
+}
+export interface PersistenceEditorData {
+  context: PersistenceContext;
+  data: PersistenceData[];
+  helpUrl: string;
+  readonly: boolean;
+}
 export interface PersistenceSaveDataArgs {
   context: PersistenceContext;
   data: PersistenceData[];
   directSave: boolean;
+}
+export interface Result {
+  script: string;
+  throwables: Throwable[];
+}
+export interface Throwable {
+  cause: Throwable;
+  detailMessage: string;
+  stackTrace: StackTraceElement[];
+  suppressedExceptions: Throwable[];
+}
+export interface StackTraceElement {
+  classLoaderName: string;
+  declaringClass: string;
+  fileName: string;
+  format: string;
+  lineNumber: number;
+  methodName: string;
+  moduleName: string;
+  moduleVersion: string;
 }
 export interface TypeSearchRequest {
   context: PersistenceContext;
