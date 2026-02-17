@@ -21,4 +21,5 @@ export interface PersistenceClient {
   ): Promise<PersistenceMetaRequestTypes[TMeta][1]>;
 
   action(action: PersistenceActionArgs): void;
+  onDataChanged: Event<void>;
 }

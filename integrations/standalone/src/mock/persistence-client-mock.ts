@@ -1,3 +1,4 @@
+import { Emitter } from '@axonivy/jsonrpc';
 import type {
   EditorFileContent,
   PersistenceActionArgs,
@@ -19,6 +20,9 @@ export class PersistenceClientMock implements PersistenceClient {
       readonly: false
     };
   }
+
+  protected onDataChangedEmitter = new Emitter<void>();
+  onDataChanged = this.onDataChangedEmitter.event;
 
   initialize(): Promise<void> {
     return Promise.resolve();
