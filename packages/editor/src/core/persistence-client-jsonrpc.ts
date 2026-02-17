@@ -22,14 +22,11 @@ import type {
 
 export class PersistenceClientJsonRpc extends BaseRpcClient implements PersistenceClient {
   protected onDataChangedEmitter = new Emitter<void>();
-  protected onValidationChangedEmitter = new Emitter<void>();
   onDataChanged: Event<void> = this.onDataChangedEmitter.event;
-  onValidationChanged: Event<void> = this.onValidationChangedEmitter.event;
 
   protected override setupConnection(): void {
     super.setupConnection();
     this.toDispose.push(this.onDataChangedEmitter);
-    this.toDispose.push(this.onValidationChangedEmitter);
     this.onNotification('dataChanged', data => {
       this.onDataChangedEmitter.fire(data);
     });

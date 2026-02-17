@@ -12,7 +12,7 @@ import {
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
 import { AppProvider } from '../context/AppContext';
@@ -50,6 +50,13 @@ export const Editor = ({ context, directSave }: PersistenceEditorProps) => {
     queryFn: () => client.data(context),
     structuralSharing: false
   });
+
+  useEffect(() => {
+    const dataDispose = client.onDataChanged(() => queryClient.invalidateQueries({ queryKey: queryKeys.data(context) }));
+    return () => {
+      dataDispose.dispose();
+    };
+  }, [client, context, queryClient, queryKeys]);
 
   if (data?.data !== undefined && initialData === undefined) {
     setInitialData(data.data);
@@ -101,7 +108,12 @@ export const Editor = ({ context, directSave }: PersistenceEditorProps) => {
         helpUrl: data.helpUrl
       }}
     >
-      <ResizableGroup orientation='horizontal' defaultLayout={defaultLayout} onLayoutChanged={onLayoutChanged} className='persistence-editor'>
+      <ResizableGroup
+        orientation='horizontal'
+        defaultLayout={defaultLayout}
+        onLayoutChanged={onLayoutChanged}
+        className='persistence-editor'
+      >
         <ResizablePanel id='main' defaultSize='50%' minSize='30%' className='persistence-editor-main-panel'>
           <Flex direction='column' className='panel'>
             <PersistenceToolbar />
