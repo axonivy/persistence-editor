@@ -7,20 +7,22 @@
 
 export interface Persistence {
 boolean: boolean
+dataclassType: DataclassType[]
 editorFileContent: EditorFileContent
-managedClassesMeta: ManagedClassesMeta[]
 persistenceContext: PersistenceContext
 persistenceEditorData: PersistenceEditorData
 persistenceSaveDataArgs: PersistenceSaveDataArgs
 string: string[]
 [k: string]: unknown
 }
+export interface DataclassType {
+  fullQualifiedName: string;
+  name: string;
+  packageName: string;
+  path: string;
+}
 export interface EditorFileContent {
   content: string;
-}
-export interface ManagedClassesMeta {
-  id: string;
-  label: string;
 }
 export interface PersistenceContext {
   app: string;

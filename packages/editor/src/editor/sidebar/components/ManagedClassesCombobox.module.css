@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  border: 1px solid var(--color-gray-200);
   border-radius: var(--border-r1);
   border: var(--input-border);
   background-color: var(--N25);
@@ -51,6 +52,7 @@
   border: none;
   background-color: transparent;
   color: var(--body);
+  min-width: 3rem;
   min-width: 0;
   width: 100%;
 

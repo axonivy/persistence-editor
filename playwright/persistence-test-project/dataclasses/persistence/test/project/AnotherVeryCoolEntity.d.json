@@ -1,0 +1,12 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.2.0/data-class.json",
+  "simpleName" : "AnotherVeryCoolEntity",
+  "namespace" : "persistence.test.project",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "Integer",
+    "comment" : "Identifier",
+    "modifiers" : [ "PERSISTENT", "ID", "GENERATED" ]
+  } ],
+  "entity" : { }
+}
