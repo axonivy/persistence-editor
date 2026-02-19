@@ -32,6 +32,9 @@
     "addPersistence": "Add Persistence Unit ({{hotkey}})",
     "deletePersistence": "Delete Persistence Unit ({{hotkey}})"
   },
+  "info": {
+    "managedClasses": "Specify the list of classes to be managed in this persistence unit. If 'Exclude unlisted classes' is checked, only the entity classes in the list below are included in the persistence unit. Otherwise all entity classes of the project are included automatically."
+  },
   "label": {
     "dataSource": "Data Source",
     "description": "Description",
