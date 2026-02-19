@@ -32,6 +32,9 @@
     "addPersistence": "Persistenzeinheit hinzufügen ({{hotkey}})",
     "deletePersistence": "Persistenzeinheit löschen ({{hotkey}})"
   },
+  "info": {
+    "managedClasses": "Geben Sie die Liste der Klassen an, die in dieser Persistenzeinheit verwaltet werden sollen. Wenn 'Nicht aufgelistete Klassen ausschließen' aktiviert ist, werden nur die unten aufgeführten Entity-Klassen in die Persistenzeinheit aufgenommen. Andernfalls werden automatisch alle Entity-Klassen des Projekts eingeschlossen."
+  },
   "label": {
     "dataSource": "Datenquelle",
     "description": "Beschreibung",
