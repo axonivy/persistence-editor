@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/persistence.json
+Persistence:
+  #Primary transactional database for core business operations
+  CoreBusinessPU:
+    DataSource: CoreDB
+    Managed:
+      Classes:
+        - persistence.test.project.AnotherVeryCoolEntity
+    Properties:
+      hibernate.hbm2ddl.auto: create-drop
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+  #Read-optimized reporting and analytics database
+  ReportingPU:
+    DataSource: ReportingDB
+    Managed:
+      Classes:
+        - persistence.test.project.VeryCoolEntity
+    Properties:
+      hibernate.hbm2ddl.auto: org.hibernate.dialect.H2Dialect
+      hibernate.connection.readOnly: create-drop
+      hibernate.dialect: 'true'
