@@ -15,7 +15,7 @@ export class Detail {
   readonly dataSource: Select;
   readonly managedClasses: Combobox;
   readonly description: Textbox;
-  readonly excludeUnlistedClasses: Checkbox;
+  readonly manageAllEntityClasses: Checkbox;
   readonly properties: Table;
 
   constructor(page: Page) {
@@ -27,7 +27,7 @@ export class Detail {
     this.name = new Textbox(this.locator, { name: 'Name' });
     this.description = new Textbox(this.locator, { name: 'Description' });
     this.dataSource = new Select(page, this.locator, { name: 'Data Source' });
-    this.excludeUnlistedClasses = new Checkbox(page, this.locator, 'Exclude unlisted classes');
+    this.manageAllEntityClasses = new Checkbox(page, this.locator, 'Manage All Entity Classes from Project');
     this.managedClasses = new Combobox(page, this.locator, { name: 'Managed Classes' });
     this.properties = new Table(page, this.locator);
   }

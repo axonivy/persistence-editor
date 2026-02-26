@@ -101,6 +101,7 @@ const ManagedClassesCollapsible = ({
   const { context } = useAppContext();
   const { t } = useTranslation();
   const entityClasses = useMeta('meta/scripting/entityClasses', context, []).data;
+
   return (
     <Collapsible defaultOpen={true}>
       <CollapsibleTrigger> {t('label.managedClasses')} </CollapsibleTrigger>
@@ -108,9 +109,9 @@ const ManagedClassesCollapsible = ({
         <Flex direction='column' gap={3}>
           <Flex alignItems='center' gap={2} justifyContent='space-between'>
             <BasicCheckbox
-              label={t('label.excludeUnlistedClasses')}
-              checked={persistence.excludeUnlistedClasses}
-              onCheckedChange={checked => handleAttributeChange('excludeUnlistedClasses', checked === true)}
+              label={t('label.manageAllFromProject')}
+              checked={!persistence.excludeUnlistedClasses}
+              onCheckedChange={checked => handleAttributeChange('excludeUnlistedClasses', checked === false)}
             />
             <Popover>
               <PopoverTrigger asChild>
