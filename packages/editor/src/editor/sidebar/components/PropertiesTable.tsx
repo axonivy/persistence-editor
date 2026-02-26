@@ -14,6 +14,7 @@ import { flexRender, type ColumnDef } from '@tanstack/react-table';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useResizableEditableTable } from '../../../hooks/useResizableEditableTable';
+import { InputCellWithBrowser } from './InputCellWithBrowser';
 
 type Property = {
   key: string;
@@ -32,7 +33,7 @@ export const PropertiesTable = ({ data, onChange }: PropertiesTableProps) => {
       {
         accessorKey: 'key',
         header: ({ column }) => <SortableHeader column={column} name={t('common.label.name')} />,
-        cell: cell => <InputCell cell={cell} />
+        cell: cell => <InputCellWithBrowser cell={cell} activeBrowsers={['PROPERTIES']} />
       },
       {
         accessorKey: 'value',

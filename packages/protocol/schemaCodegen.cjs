@@ -17,7 +17,7 @@ tsGen.DEFAULT_OPTIONS.bannerComment = `
 
 const tsOut = path.resolve('./src/data/persistence.ts');
 var schemaUri =
-  'https://jenkins.ivyteam.io/job/core_json-schema/job/master/lastSuccessfulBuild/artifact/build/schema/target/editor-ts/14.0/persistence-tsgen.json';
+  'https://jenkins.ivyteam.io/job/core_json-schema/job/add-properties-meta/lastSuccessfulBuild/artifact/build/schema/target/editor-ts/14.0/persistence-tsgen.json';
 
 const args = process.argv.slice(2);
 if (args.length > 0) {

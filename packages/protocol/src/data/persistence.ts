@@ -11,6 +11,7 @@ dataclassType: DataclassType[]
 editorFileContent: EditorFileContent
 persistenceContext: PersistenceContext
 persistenceEditorData: PersistenceEditorData
+persistencePropertyMeta: PersistencePropertyMeta[]
 persistenceSaveDataArgs: PersistenceSaveDataArgs
 string: string[]
 [k: string]: unknown
@@ -45,6 +46,12 @@ export interface PersistenceData {
 }
 export interface MapStringString {
   [k: string]: string;
+}
+export interface PersistencePropertyMeta {
+  defaultValue: string;
+  description: string;
+  examples: string[];
+  property: string;
 }
 export interface PersistenceSaveDataArgs {
   context: PersistenceContext;

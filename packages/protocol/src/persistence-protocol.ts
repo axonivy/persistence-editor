@@ -4,6 +4,7 @@ import type {
   EditorFileContent,
   PersistenceContext,
   PersistenceEditorData,
+  PersistencePropertyMeta,
   PersistenceSaveDataArgs
 } from './data/persistence';
 
@@ -16,6 +17,7 @@ export interface PersistenceActionArgs {
 export interface PersistenceMetaRequestTypes {
   'meta/dataSources': [PersistenceContext, Array<string>];
   'meta/scripting/entityClasses': [PersistenceContext, Array<DataclassType>];
+  'meta/properties/all': [void, Array<PersistencePropertyMeta>];
 }
 
 export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes {

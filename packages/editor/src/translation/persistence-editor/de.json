@@ -9,11 +9,15 @@
       "undo": "Rückgängig ({{hotkey}})"
     },
     "label": {
+      "apply": "Anwenden",
+      "browser": "Browser",
       "cancel": "Abbrechen",
       "details": "Details",
       "general": "Allgemein",
+      "info": "Info",
       "name": "Name",
       "remove": "Entfernen",
+      "search": "Suchen",
       "value": "Wert"
     },
     "message": {
@@ -24,6 +28,12 @@
     "addPersistence": {
       "desc": "Eine neue Persistenzeinheit hinzufügen.",
       "title": "Persistenzeinheit hinzufügen"
+    },
+    "browser": {
+      "description": "Durchsuchen Sie verfügbare Optionen.",
+      "loadError": "Konnte Browser-Daten nicht laden",
+      "loading": "Lädt...",
+      "title": "Browser"
     },
     "create": "Erstellen",
     "createTooltip": "Halte {{modifier}} gedrückt, um eine weitere Persistenzeinheit hinzuzufügen."
@@ -37,7 +47,9 @@
   },
   "label": {
     "dataSource": "Datenquelle",
+    "defaultValue": "Standardwert: {{defaultValue}}",
     "description": "Beschreibung",
+    "examples": "Beispiele: {{examples}}",
     "manageAllFromProject": "Alle Entity-Klassen aus dem Projekt verwalten",
     "managedClasses": "Verwaltete Klassen",
     "noManagedClassesFound": "Keine verwalteten Klassen gefunden",
