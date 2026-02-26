@@ -8,7 +8,7 @@ import type {
   PersistenceSaveDataArgs
 } from '@axonivy/persistence-editor-protocol';
 import { data } from './data-mock';
-import { DATACLASSES, DATASOURCES } from './meta-mock';
+import { DATACLASSES, DATASOURCES, PROPERTIES } from './meta-mock';
 
 export class PersistenceClientMock implements PersistenceClient {
   private persistenceData: PersistenceEditorData;
@@ -47,6 +47,8 @@ export class PersistenceClientMock implements PersistenceClient {
         return Promise.resolve(DATACLASSES);
       case 'meta/dataSources':
         return Promise.resolve(DATASOURCES);
+      case 'meta/properties/all':
+        return Promise.resolve(PROPERTIES);
       default:
         throw Error('mock meta path not programmed');
     }

@@ -9,11 +9,15 @@
       "undo": "Undo ({{hotkey}})"
     },
     "label": {
+      "apply": "Apply",
+      "browser": "Browser",
       "cancel": "Cancel",
       "details": "Details",
       "general": "General",
+      "info": "Info",
       "name": "Name",
       "remove": "Remove",
+      "search": "Search",
       "value": "Value"
     },
     "message": {
@@ -24,6 +28,12 @@
     "addPersistence": {
       "desc": "Add a new persistence unit.",
       "title": "Add Persistence Unit"
+    },
+    "browser": {
+      "description": "Browse available options.",
+      "loadError": "Couldn't load browser data",
+      "loading": "Loading...",
+      "title": "Browser"
     },
     "create": "Create",
     "createTooltip": "Hold {{modifier}} to add an additional persistence unit."
@@ -37,7 +47,9 @@
   },
   "label": {
     "dataSource": "Data Source",
+    "defaultValue": "Default Value: {{defaultValue}}",
     "description": "Description",
+    "examples": "Examples: {{examples}}",
     "manageAllFromProject": "Manage All Entity Classes from Project",
     "managedClasses": "Managed Classes",
     "noManagedClassesFound": "No managed classes found",

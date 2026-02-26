@@ -16,6 +16,7 @@
   "dependencies": {
     "@axonivy/persistence-editor-protocol": "workspace:~14.0.0-next",
     "@base-ui/react": "^1.0.0",
+    "react-aria": "^3.38.0",
     "react-error-boundary": "^6.1.0"
   },
   "peerDependencies": {

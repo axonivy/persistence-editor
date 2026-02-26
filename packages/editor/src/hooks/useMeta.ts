@@ -10,12 +10,12 @@ export function useMeta<TMeta extends keyof PersistenceMetaRequestTypes>(
   args: PersistenceMetaRequestTypes[TMeta][0],
   initialData: NonUndefinedGuard<PersistenceMetaRequestTypes[TMeta][1]>,
   options?: { disable?: boolean }
-): { data: PersistenceMetaRequestTypes[TMeta][1] } {
+) {
   const client = useClient();
   return useQuery({
     enabled: !options?.disable,
     queryKey: genQueryKey(path, args),
     queryFn: () => client.meta(path, args),
-    initialData: initialData
+    initialData
   });
 }
