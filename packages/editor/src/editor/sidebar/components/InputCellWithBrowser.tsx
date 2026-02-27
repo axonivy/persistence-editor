@@ -20,7 +20,6 @@ import { useRef, useState } from 'react';
 import { useFocusWithin } from 'react-aria';
 import { useTranslation } from 'react-i18next';
 import { Browser, type BrowserType } from '../browser/Browser';
-import './InputCellWithBrowser.css';
 
 type InputCellProps<TData> = InputProps & { cell: CellContext<TData, string>; activeBrowsers: Array<BrowserType> };
 
@@ -36,11 +35,12 @@ export const InputCellWithBrowser = <TData,>({ cell, activeBrowsers }: InputCell
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <InputGroup className='input-cell-with-browser' {...focusWithinProps}>
+      <InputGroup className='border-none! bg-transparent!' {...focusWithinProps}>
         <BasicInput
           ref={inputRef}
           value={value}
           onChange={e => setValue(e.target.value)}
+          className='bg-transparent! text-inherit!'
           onBlur={e => {
             if (e.relatedTarget && e.currentTarget.parentElement?.contains(e.relatedTarget)) {
               return;
@@ -71,7 +71,7 @@ export const InputCellWithBrowser = <TData,>({ cell, activeBrowsers }: InputCell
           </TooltipProvider>
         )}
       </InputGroup>
-      <DialogContent style={{ height: '80vh' }}>
+      <DialogContent className='h-[80vh]'>
         <BasicDialogHeader title={t('dialog.browser.title')} description={t('dialog.browser.description')} />
         <Browser value={value} onChange={updateValue} close={() => setOpen(false)} activeBrowsers={activeBrowsers} />
       </DialogContent>

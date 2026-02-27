@@ -11,7 +11,7 @@ export class Main {
   readonly table: Table;
 
   constructor(readonly page: Page) {
-    this.locator = page.locator('.persistence-editor-main-content');
+    this.locator = page.locator('#persistence-editor-main');
     this.add = this.locator.getByRole('button', { name: 'Add Persistence Unit' });
     this.delete = this.locator.getByRole('button', { name: 'Delete Persistence Unit' });
     this.search = this.locator.getByRole('textbox').first();
