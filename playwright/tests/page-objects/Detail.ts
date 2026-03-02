@@ -10,7 +10,6 @@ export class Detail {
   readonly locator: Locator;
   readonly header: Locator;
   readonly help: Locator;
-  readonly content: Locator;
   readonly name: Textbox;
   readonly dataSource: Select;
   readonly managedClasses: Combobox;
@@ -20,10 +19,9 @@ export class Detail {
 
   constructor(page: Page) {
     this.page = page;
-    this.locator = this.page.locator('.persistence-editor-detail-panel');
-    this.header = this.locator.locator('.persistence-editor-detail-header');
+    this.locator = this.page.locator('#persistence-editor-detail');
+    this.header = this.locator.locator('.ui-sidebar-header');
     this.help = this.locator.getByRole('button', { name: 'Open Help' });
-    this.content = this.locator.locator('.persistence-editor-detail-content');
     this.name = new Textbox(this.locator, { name: 'Name' });
     this.description = new Textbox(this.locator, { name: 'Description' });
     this.dataSource = new Select(page, this.locator, { name: 'Data Source' });

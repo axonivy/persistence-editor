@@ -20,7 +20,6 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useMeta } from '../../hooks/useMeta';
-import './DetailContent.css';
 import ManagedClassesCombobox from './components/ManagedClassesCombobox';
 import { NameInput } from './components/NameInput';
 import { PropertiesTable } from './components/PropertiesTable';
@@ -42,7 +41,7 @@ export const DetailContent = () => {
     });
 
   return (
-    <Flex direction='column' gap={4} className='persistence-editor-detail-content'>
+    <Flex direction='column' gap={4} className='min-h-0 overflow-auto p-3'>
       <GeneralCollapsible persistence={persistence} handleAttributeChange={handleAttributeChange} />
       <ManagedClassesCollapsible persistence={persistence} handleAttributeChange={handleAttributeChange} />
       <PropertiesTable
@@ -117,7 +116,7 @@ const ManagedClassesCollapsible = ({
               <PopoverTrigger asChild>
                 <Button icon={IvyIcons.InfoCircle} />
               </PopoverTrigger>
-              <PopoverContent collisionPadding={10} style={{ maxWidth: '500px' }}>
+              <PopoverContent collisionPadding={10} className='max-w-125'>
                 {t('info.managedClasses')}
                 <PopoverArrow />
               </PopoverContent>

@@ -5,4 +5,4 @@ export * from './query/query-client';
 export * from './query/QueryProvider';
 export { default as deMessages } from './translation/persistence-editor/de.json';
 export { default as enMessages } from './translation/persistence-editor/en.json';
-
+import './index.css';

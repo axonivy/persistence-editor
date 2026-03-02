@@ -4,17 +4,13 @@ import { PersistenceEditor } from '../page-objects/PersistenceEditor';
 test('empty', async ({ page }) => {
   const editor = await PersistenceEditor.openMock(page);
   await expect(editor.detail.header).toHaveText('Persistence Unit');
-  await expect(editor.detail.content).toBeHidden();
-  const emptyMessage = editor.detail.locator.locator('.ui-panel-message');
-  await expect(emptyMessage).toBeVisible();
-  await expect(emptyMessage).toHaveText('No Persistence Unit Selected');
+  await expect(editor.detail.locator.locator('.ui-panel-message')).toHaveText('No Persistence Unit Selected');
 });
 
 test('edit persistence', async ({ page }) => {
   const editor = await PersistenceEditor.openMock(page);
   await editor.main.table.row(0).locator.click();
   await expect(editor.detail.header).toHaveText('League Persistence Unit');
-  await expect(editor.detail.content).toBeVisible();
 
   await expect(editor.detail.name.locator).toHaveValue('League Persistence Unit');
   await expect(editor.detail.dataSource.locator).toHaveText('LeagueDB');

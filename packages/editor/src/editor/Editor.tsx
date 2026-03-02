@@ -8,17 +8,18 @@ import {
   Spinner,
   useDefaultLayout,
   useHistoryData,
+  useHotkeys,
   type Unary
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
 import { AppProvider } from '../context/AppContext';
 import { useClient } from '../context/ClientContext';
 import { genQueryKey } from '../query/query-client';
-import './Editor.css';
+import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 import { ErrorFallback } from './main/ErrorFallback';
 import { Main } from './main/Main';
 import { PersistenceToolbar } from './main/PersistenceToolbar';
@@ -80,9 +81,22 @@ export const Editor = ({ context, directSave }: PersistenceEditorProps) => {
     onSuccess: () => queryClient.invalidateQueries()
   });
 
+  const detailRef = useRef<HTMLDivElement>(null);
+  const hotkeys = useKnownHotkeys();
+  useHotkeys(
+    hotkeys.focusInscription.hotkey,
+    () => {
+      setDetail(true);
+      detailRef.current?.focus();
+    },
+    {
+      scopes: ['global']
+    }
+  );
+
   if (isPending) {
     return (
-      <Flex alignItems='center' justifyContent='center' style={{ width: '100%', height: '100%' }}>
+      <Flex alignItems='center' justifyContent='center' className='size-full'>
         <Spinner />
       </Flex>
     );
@@ -108,14 +122,9 @@ export const Editor = ({ context, directSave }: PersistenceEditorProps) => {
         helpUrl: data.helpUrl
       }}
     >
-      <ResizableGroup
-        orientation='horizontal'
-        defaultLayout={defaultLayout}
-        onLayoutChanged={onLayoutChanged}
-        className='persistence-editor'
-      >
-        <ResizablePanel id='main' defaultSize='50%' minSize='30%' className='persistence-editor-main-panel'>
-          <Flex direction='column' className='panel'>
+      <ResizableGroup orientation='horizontal' defaultLayout={defaultLayout} onLayoutChanged={onLayoutChanged}>
+        <ResizablePanel id='persistence-editor-main' defaultSize='50%' minSize='30%' className='bg-n75'>
+          <Flex direction='column' className='h-full'>
             <PersistenceToolbar />
             <ErrorBoundary FallbackComponent={ErrorFallback} resetKeys={[data]}>
               <Main />
@@ -125,9 +134,9 @@ export const Editor = ({ context, directSave }: PersistenceEditorProps) => {
         {detail && (
           <>
             <ResizableHandle />
-            <ResizablePanel id='properties' defaultSize='25%' minSize='20%' className='persistence-editor-detail-panel'>
-              <Flex direction='column' className='panel'>
-                <Sidebar />
+            <ResizablePanel id='persistence-editor-detail' defaultSize='25%' minSize='20%'>
+              <Flex direction='column' className='h-full'>
+                <Sidebar ref={detailRef} />
               </Flex>
             </ResizablePanel>
           </>

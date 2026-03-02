@@ -32,7 +32,6 @@ import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useKnownHotkeys } from '../../utils/useKnownHotkeys';
 import { AddPersistenceDialog } from '../dialog/AddPersistenceDialog';
-import './Main.css';
 
 export const Main = () => {
   const { t } = useTranslation();
@@ -112,7 +111,7 @@ export const Main = () => {
 
   if (data === undefined || data.length === 0) {
     return (
-      <Flex direction='column' alignItems='center' justifyContent='center' style={{ height: '100%' }}>
+      <Flex direction='column' alignItems='center' justifyContent='center' className='h-full'>
         <PanelMessage icon={IvyIcons.Tool} message={t('message.addFirstPersistence')} mode='column'>
           <AddPersistenceDialog table={table}>
             <Button size='large' variant='primary' icon={IvyIcons.Plus}>
@@ -125,11 +124,11 @@ export const Main = () => {
   }
 
   return (
-    <Flex direction='column' ref={ref} onClick={resetSelection} className='persistence-editor-main-content'>
+    <Flex direction='column' ref={ref} onClick={resetSelection} className='h-full overflow-auto'>
       <BasicField
         tabIndex={-1}
         ref={firstElement}
-        className='persistence-editor-table-field'
+        className='m-3 min-h-0'
         label={t('label.persistenceUnits')}
         control={
           <Controls table={table} deletePersistence={table.getSelectedRowModel().flatRows.length > 0 ? deletePersistence : undefined} />
@@ -137,7 +136,7 @@ export const Main = () => {
         onClick={event => event.stopPropagation()}
       >
         {globalFilter.filter}
-        <div className='persistence-editor-table-container'>
+        <div className='overflow-x-hidden'>
           <Table onKeyDown={e => handleKeyDown(e, () => setDetail(!detail))}>
             <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={resetSelection} />
             <TableBody>
@@ -169,7 +168,7 @@ const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceD
       <AddPersistenceDialog table={table}>
         <Button icon={IvyIcons.Plus} aria-label={hotkeys.addPersistence.label} />
       </AddPersistenceDialog>
-      <Separator decorative orientation='vertical' style={{ height: '20px', margin: 0 }} />
+      <Separator decorative orientation='vertical' className='m-0! h-5!' />
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
