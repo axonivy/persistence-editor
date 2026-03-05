@@ -5,7 +5,9 @@ import type {
   PersistenceContext,
   PersistenceEditorData,
   PersistencePropertyMeta,
-  PersistenceSaveDataArgs
+  PersistenceSaveDataArgs,
+  Result,
+  SchemaGenerateArgs
 } from './data/persistence';
 
 export interface PersistenceActionArgs {
@@ -14,13 +16,18 @@ export interface PersistenceActionArgs {
   payload: string;
 }
 
-export interface PersistenceMetaRequestTypes {
+export interface FunctionRequestTypes {
+  'functions/schemaExecute': [SchemaGenerateArgs, Result];
+}
+
+export interface MetaRequestTypes {
+  'functions/schemaShow': [SchemaGenerateArgs, Result];
   'meta/dataSources': [PersistenceContext, Array<string>];
   'meta/scripting/entityClasses': [PersistenceContext, Array<DataclassType>];
   'meta/properties/all': [void, Array<PersistencePropertyMeta>];
 }
 
-export interface PersistenceRequestTypes extends PersistenceMetaRequestTypes {
+export interface PersistenceRequestTypes extends MetaRequestTypes, FunctionRequestTypes {
   initialize: [PersistenceContext, void];
   data: [PersistenceContext, PersistenceEditorData];
   saveData: [PersistenceSaveDataArgs, EditorFileContent];

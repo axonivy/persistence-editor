@@ -5,16 +5,20 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type GenerationType = ("UPDATE" | "CREATE")
+
 export interface Persistence {
-boolean: boolean
-dataclassType: DataclassType[]
-editorFileContent: EditorFileContent
-persistenceContext: PersistenceContext
-persistenceEditorData: PersistenceEditorData
-persistencePropertyMeta: PersistencePropertyMeta[]
-persistenceSaveDataArgs: PersistenceSaveDataArgs
-string: string[]
-[k: string]: unknown
+  boolean: boolean;
+  dataclassType: DataclassType[];
+  editorFileContent: EditorFileContent;
+  persistenceContext: PersistenceContext;
+  persistenceEditorData: PersistenceEditorData;
+  persistencePropertyMeta: PersistencePropertyMeta[];
+  persistenceSaveDataArgs: PersistenceSaveDataArgs;
+  result: Result;
+  schemaGenerateArgs: SchemaGenerateArgs;
+  string: string[];
+  [k: string]: unknown;
 }
 export interface DataclassType {
   fullQualifiedName: string;
@@ -57,4 +61,22 @@ export interface PersistenceSaveDataArgs {
   context: PersistenceContext;
   data: PersistenceData[];
   directSave: boolean;
+}
+export interface Result {
+  errors: ErrorInfo[];
+  script: string;
+}
+export interface ErrorInfo {
+  message: string;
+  title: string;
+  type: string;
+}
+export interface SchemaGenerateArgs {
+  config: SchemaGenerationConfig;
+  context: PersistenceContext;
+}
+export interface SchemaGenerationConfig {
+  dataSource: string;
+  generationType: GenerationType;
+  persistenceUnit: string;
 }

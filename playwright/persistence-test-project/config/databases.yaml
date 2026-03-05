@@ -1,9 +1,10 @@
 # yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/databases.json
 Databases:
   CoreDB:
-    Url: jdbc:mysql://null
+    Url: jdbc:mysql://localhost:3306/mydatabase
     Driver: com.mysql.cj.jdbc.Driver
-    Password: ${decrypt:}
+    UserName: admin
+    Password: ${decrypt:mcGu8OB3Afcu6dj3lt4dLQ==}
     MaxConnections: 5
   ReportingDB:
     Url: jdbc:mysql://null

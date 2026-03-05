@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   type DataclassType,
+  type MetaRequestTypes,
   type PersistenceContext,
-  type PersistenceData,
-  type PersistenceMetaRequestTypes
+  type PersistenceData
 } from '@axonivy/persistence-editor-protocol';
 import { ReadonlyProvider } from '@axonivy/ui-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -46,7 +46,7 @@ const ContextHelper = ({ appContext, readonly, meta, children }: ContextHelperPr
   const client: ClientContext = {
     // @ts-ignore
     client: {
-      meta<TMeta extends keyof PersistenceMetaRequestTypes>(path: TMeta): Promise<PersistenceMetaRequestTypes[TMeta][1]> {
+      meta<TMeta extends keyof MetaRequestTypes>(path: TMeta): Promise<MetaRequestTypes[TMeta][1]> {
         switch (path) {
           case 'meta/scripting/entityClasses':
             return Promise.resolve(meta?.dataClasses ?? []);

@@ -10,6 +10,8 @@ import {
 import type {
   EditorFileContent,
   Event,
+  FunctionRequestTypes,
+  MetaRequestTypes,
   PersistenceActionArgs,
   PersistenceClient,
   PersistenceContext,
@@ -44,10 +46,14 @@ export class PersistenceClientJsonRpc extends BaseRpcClient implements Persisten
     return this.sendRequest('saveData', { ...saveData });
   }
 
-  meta<TMeta extends keyof PersistenceRequestTypes>(
-    path: TMeta,
-    args: PersistenceRequestTypes[TMeta][0]
-  ): Promise<PersistenceRequestTypes[TMeta][1]> {
+  meta<TMeta extends keyof MetaRequestTypes>(path: TMeta, args: MetaRequestTypes[TMeta][0]): Promise<MetaRequestTypes[TMeta][1]> {
+    return this.sendRequest(path, args);
+  }
+
+  functions<TFunction extends keyof FunctionRequestTypes>(
+    path: TFunction,
+    args: FunctionRequestTypes[TFunction][0]
+  ): Promise<FunctionRequestTypes[TFunction][1]> {
     return this.sendRequest(path, args);
   }
 

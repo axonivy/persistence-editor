@@ -32,6 +32,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useKnownHotkeys } from '../../utils/useKnownHotkeys';
 import { AddPersistenceDialog } from '../dialog/AddPersistenceDialog';
+import { SchemaGenerateDialog } from '../dialog/SchemaGenerateDialog';
 
 export const Main = () => {
   const { t } = useTranslation();
@@ -158,6 +159,7 @@ export const Main = () => {
 };
 
 const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceData>; deletePersistence?: () => void }) => {
+  const { t } = useTranslation();
   const readonly = useReadonly();
   const hotkeys = useKnownHotkeys();
   if (readonly) {
@@ -169,6 +171,9 @@ const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceD
         <Button icon={IvyIcons.Plus} aria-label={hotkeys.addPersistence.label} />
       </AddPersistenceDialog>
       <Separator decorative orientation='vertical' className='m-0! h-5!' />
+      <SchemaGenerateDialog>
+        <Button icon={IvyIcons.SettingsCog} aria-label={t('dialog.generateSchema.title')} disabled={deletePersistence === undefined} />
+      </SchemaGenerateDialog>
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>

@@ -103,3 +103,38 @@ test('empty', async ({ page }) => {
   await page.keyboard.press('a');
   await expect(dialog.locator).toBeVisible();
 });
+
+test('schemaGenerate', async ({ page }) => {
+  const editor = await PersistenceEditor.openMock(page);
+  await editor.main.table.expectToHaveRowCount(3);
+  const dialog = await editor.main.openSchemaGenerateDialog(0);
+  await expect(dialog.type.locator).toHaveText('Create');
+  await expect(dialog.generatedSql).toContainText('create sequence AnotherVeryCoolEntity_SEQ start with 1 increment by 50;');
+  await expect(dialog.execute).toBeVisible();
+  await expect(dialog.retry).toBeHidden();
+  await expect(dialog.close).toBeHidden();
+
+  await dialog.execute.click();
+  await expect(dialog.execute).toBeHidden();
+  await expect(dialog.retry).toBeVisible();
+  await expect(dialog.close).toBeHidden();
+  await expect(dialog.message).toHaveText('Error executing DDL [object name already exists]');
+
+  await dialog.retry.click();
+  await expect(dialog.execute).toBeVisible();
+  await expect(dialog.retry).toBeHidden();
+  await expect(dialog.close).toBeHidden();
+  await expect(dialog.generatedSql).toContainText('create sequence AnotherVeryCoolEntity_SEQ start with 1 increment by 50;');
+
+  await dialog.type.select('Update');
+  await expect(dialog.generatedSql).toContainText('alter table AnotherVeryCoolEntity');
+  await dialog.execute.click();
+  await expect(dialog.execute).toBeHidden();
+  await expect(dialog.retry).toBeHidden();
+  await expect(dialog.close).toBeVisible();
+  await expect(dialog.message).toHaveText('Schema generated successfully');
+  await expect(dialog.type.locator).toBeDisabled();
+
+  await dialog.close.click();
+  await expect(dialog.locator).toBeHidden();
+});
