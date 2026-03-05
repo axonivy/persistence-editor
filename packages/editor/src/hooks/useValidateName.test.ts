@@ -8,7 +8,7 @@ const data: Array<PersistenceData> = [
     name: 'Employee',
     description: 'Employee persistence unit',
     dataSource: 'hr-db',
-    excludeUnlistedClasses: false,
+    allProjectEntities: true,
     managedClasses: [],
     properties: {}
   },
@@ -16,7 +16,7 @@ const data: Array<PersistenceData> = [
     name: 'Teamleader',
     description: 'Teamleader persistence unit',
     dataSource: 'hr-db',
-    excludeUnlistedClasses: false,
+    allProjectEntities: true,
     managedClasses: [],
     properties: {}
   },
@@ -24,7 +24,7 @@ const data: Array<PersistenceData> = [
     name: 'Manager',
     description: 'Manager persistence unit',
     dataSource: 'hr-db',
-    excludeUnlistedClasses: false,
+    allProjectEntities: true,
     managedClasses: [],
     properties: {}
   },
@@ -32,7 +32,7 @@ const data: Array<PersistenceData> = [
     name: 'HR Manager',
     description: 'HR manager persistence unit',
     dataSource: 'hr-db',
-    excludeUnlistedClasses: false,
+    allProjectEntities: true,
     managedClasses: [],
     properties: {}
   }
