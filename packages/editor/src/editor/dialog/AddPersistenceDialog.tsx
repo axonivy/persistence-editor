@@ -59,7 +59,7 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<PersistenceData
     if (!allInputsValid) {
       return;
     }
-    setData(old => [...old, { name, dataSource: '', description: '', excludeUnlistedClasses: false, managedClasses: [], properties: {} }]);
+    setData(old => [...old, { name, dataSource: '', description: '', allProjectEntities: true, managedClasses: [], properties: {} }]);
     if (!event.ctrlKey && !event.metaKey) {
       closeDialog();
     } else {

@@ -109,8 +109,8 @@ const ManagedClassesCollapsible = ({
           <Flex alignItems='center' gap={2} justifyContent='space-between'>
             <BasicCheckbox
               label={t('label.manageAllFromProject')}
-              checked={!persistence.excludeUnlistedClasses}
-              onCheckedChange={checked => handleAttributeChange('excludeUnlistedClasses', checked === false)}
+              checked={persistence.allProjectEntities}
+              onCheckedChange={checked => handleAttributeChange('allProjectEntities', checked === true)}
             />
             <Popover>
               <PopoverTrigger asChild>

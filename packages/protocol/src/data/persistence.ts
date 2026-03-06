@@ -37,9 +37,9 @@ export interface PersistenceEditorData {
   readonly: boolean;
 }
 export interface PersistenceData {
+  allProjectEntities: boolean;
   dataSource: string;
   description: string;
-  excludeUnlistedClasses: boolean;
   managedClasses: string[];
   name: string;
   properties: MapStringString;
