@@ -35,8 +35,28 @@
       "loading": "Loading...",
       "title": "Browser"
     },
+    "close": "Close",
     "create": "Create",
-    "createTooltip": "Hold {{modifier}} to add an additional persistence unit."
+    "createTooltip": "Hold {{modifier}} to add an additional persistence unit.",
+    "execute": "Execute",
+    "executeTooltip": "Execute the displayed SQL in the connected database.",
+    "generateSchema": {
+      "copyFailed": "Failed to copy SQL to clipboard",
+      "copySql": "Copy SQL",
+      "copySuccess": "Copied SQL to clipboard",
+      "create": "Create",
+      "description": "Generate the database schema based on the current persistence unit configuration.",
+      "nothingToGenerate": "Nothing to generate",
+      "sqlTitle": "Generated SQL",
+      "successMessage": "Schema generated successfully",
+      "successTitle": "Success",
+      "title": "Generate Schema",
+      "type": "Generation Type",
+      "update": "Update"
+    },
+    "loading": "Loading",
+    "retry": "Retry",
+    "retryTooltip": "Retry generating the SQL preview."
   },
   "hotkey": {
     "addPersistence": "Add Persistence Unit ({{hotkey}})",

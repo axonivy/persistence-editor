@@ -1,14 +1,16 @@
 import { Emitter } from '@axonivy/jsonrpc';
 import type {
   EditorFileContent,
+  FunctionRequestTypes,
+  MetaRequestTypes,
   PersistenceActionArgs,
   PersistenceClient,
   PersistenceEditorData,
-  PersistenceMetaRequestTypes,
-  PersistenceSaveDataArgs
+  PersistenceSaveDataArgs,
+  SchemaGenerateArgs
 } from '@axonivy/persistence-editor-protocol';
 import { data } from './data-mock';
-import { DATACLASSES, DATASOURCES, PROPERTIES } from './meta-mock';
+import { DATACLASSES, DATASOURCES, PROPERTIES, SCHEMA_EXECUTE, SCHEMA_EXECUTE_ERROR, SCHEMA_SHOW, SCHEMA_SHOW_UPDATE } from './meta-mock';
 
 export class PersistenceClientMock implements PersistenceClient {
   private persistenceData: PersistenceEditorData;
@@ -37,10 +39,7 @@ export class PersistenceClientMock implements PersistenceClient {
     return Promise.resolve({ content: '' });
   }
 
-  async meta<TMeta extends keyof PersistenceMetaRequestTypes>(
-    path: TMeta,
-    args: PersistenceMetaRequestTypes[TMeta][0]
-  ): Promise<PersistenceMetaRequestTypes[TMeta][1]> {
+  async meta<TMeta extends keyof MetaRequestTypes>(path: TMeta, args: MetaRequestTypes[TMeta][0]): Promise<MetaRequestTypes[TMeta][1]> {
     console.log('Meta:', args);
     switch (path) {
       case 'meta/scripting/entityClasses':
@@ -49,8 +48,30 @@ export class PersistenceClientMock implements PersistenceClient {
         return Promise.resolve(DATASOURCES);
       case 'meta/properties/all':
         return Promise.resolve(PROPERTIES);
+      case 'functions/schemaShow':
+        if ((args as SchemaGenerateArgs).config.generationType === 'CREATE') {
+          return Promise.resolve(SCHEMA_SHOW);
+        } else {
+          return Promise.resolve(SCHEMA_SHOW_UPDATE);
+        }
       default:
         throw Error('mock meta path not programmed');
+    }
+  }
+
+  functions<TFunction extends keyof FunctionRequestTypes>(
+    path: TFunction,
+    args: FunctionRequestTypes[TFunction][0]
+  ): Promise<FunctionRequestTypes[TFunction][1]> {
+    switch (path) {
+      case 'functions/schemaExecute':
+        if (args.config.generationType === 'CREATE') {
+          return Promise.resolve(SCHEMA_EXECUTE_ERROR);
+        } else {
+          return Promise.resolve(SCHEMA_EXECUTE);
+        }
+      default:
+        throw Error('mock function path not programmed');
     }
   }
 

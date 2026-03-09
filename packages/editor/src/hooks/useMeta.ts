@@ -1,14 +1,14 @@
-import type { PersistenceMetaRequestTypes } from '@axonivy/persistence-editor-protocol';
+import type { MetaRequestTypes } from '@axonivy/persistence-editor-protocol';
 import { useQuery } from '@tanstack/react-query';
 import { useClient } from '../context/ClientContext';
 import { genQueryKey } from '../query/query-client';
 
 type NonUndefinedGuard<T> = T extends undefined ? never : T;
 
-export function useMeta<TMeta extends keyof PersistenceMetaRequestTypes>(
+export function useMeta<TMeta extends keyof MetaRequestTypes>(
   path: TMeta,
-  args: PersistenceMetaRequestTypes[TMeta][0],
-  initialData: NonUndefinedGuard<PersistenceMetaRequestTypes[TMeta][1]>,
+  args: MetaRequestTypes[TMeta][0],
+  initialData: NonUndefinedGuard<MetaRequestTypes[TMeta][1]>,
   options?: { disable?: boolean }
 ) {
   const client = useClient();

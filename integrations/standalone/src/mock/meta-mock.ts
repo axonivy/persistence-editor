@@ -1,4 +1,4 @@
-import type { DataclassType, PersistencePropertyMeta } from '@axonivy/persistence-editor-protocol';
+import type { DataclassType, PersistencePropertyMeta, Result } from '@axonivy/persistence-editor-protocol';
 
 export const DATACLASSES: Array<DataclassType> = [
   {
@@ -31,3 +31,29 @@ export const PROPERTIES: Array<PersistencePropertyMeta> = [
 ];
 
 export const DATASOURCES: Array<string> = ['LeagueDB', 'StatisticsDB', 'AuditDB', 'FinanceDB', 'WarehouseDB', 'AnalyticsDB'];
+
+export const SCHEMA_SHOW: Result = {
+  script:
+    '\n    create sequence AnotherVeryCoolEntity_SEQ start with 1 increment by 50;\n\n    create table AnotherVeryCoolEntity (\n        id integer not null,\n        primary key (id)\n    );\n',
+  errors: []
+};
+export const SCHEMA_SHOW_UPDATE: Result = {
+  script: '\n    alter table AnotherVeryCoolEntity \n       add column name varchar(255);\n',
+  errors: []
+};
+
+export const SCHEMA_EXECUTE: Result = {
+  script: '',
+  errors: []
+};
+
+export const SCHEMA_EXECUTE_ERROR: Result = {
+  script: '',
+  errors: [
+    {
+      message: 'Error executing DDL [object name already exists]',
+      title: 'SQLSyntaxErrorException',
+      type: 'ERROR'
+    }
+  ]
+};
