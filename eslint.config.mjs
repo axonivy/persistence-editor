@@ -13,5 +13,9 @@ export default config.defineConfig(
         tsconfigRootDir: import.meta.dirname
       }
     }
+  },
+  {
+    name: 'ignored-files',
+    ignores: ['protocol/src/data/persistence.ts', 'playwright/tests/global.setup.ts']
   }
 );
