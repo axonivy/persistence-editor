@@ -1,4 +1,4 @@
-import { Button, SidebarHeader, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useHotkeys } from '@axonivy/ui-components';
+import { BasicTooltip, Button, SidebarHeader, useHotkeys } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
@@ -17,14 +17,9 @@ export const Sidebar = ({ ref }: { ref: React.Ref<HTMLDivElement> }) => {
   return (
     <>
       <SidebarHeader title={persistence?.name ?? t('title.detail')} icon={IvyIcons.PenEdit} ref={ref} tabIndex={-1}>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button icon={IvyIcons.Help} onClick={() => openUrl(helpUrl)} aria-label={helpText.label} />
-            </TooltipTrigger>
-            <TooltipContent>{helpText.label}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <BasicTooltip content={helpText.label}>
+          <Button icon={IvyIcons.Help} onClick={() => openUrl(helpUrl)} aria-label={helpText.label} />
+        </BasicTooltip>
       </SidebarHeader>
       <DetailContent />
     </>

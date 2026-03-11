@@ -1,6 +1,7 @@
 import type { PersistenceData } from '@axonivy/persistence-editor-protocol';
 import {
   BasicField,
+  BasicTooltip,
   Button,
   deleteFirstSelectedRow,
   Flex,
@@ -14,10 +15,6 @@ import {
   TableBody,
   TableCell,
   TableResizableHeader,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
   useHotkeys,
   useReadonly,
   useTableGlobalFilter,
@@ -174,19 +171,14 @@ const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceD
       <SchemaGenerateDialog>
         <Button icon={IvyIcons.SettingsCog} aria-label={t('dialog.generateSchema.title')} disabled={deletePersistence === undefined} />
       </SchemaGenerateDialog>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              icon={IvyIcons.Trash}
-              onClick={deletePersistence}
-              disabled={deletePersistence === undefined}
-              aria-label={hotkeys.deletePersistence.label}
-            />
-          </TooltipTrigger>
-          <TooltipContent>{hotkeys.deletePersistence.label}</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <BasicTooltip content={hotkeys.deletePersistence.label}>
+        <Button
+          icon={IvyIcons.Trash}
+          onClick={deletePersistence}
+          disabled={deletePersistence === undefined}
+          aria-label={hotkeys.deletePersistence.label}
+        />
+      </BasicTooltip>
     </Flex>
   );
 };

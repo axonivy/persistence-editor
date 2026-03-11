@@ -5,7 +5,7 @@ export const data: PersistenceData[] = [
     name: 'League Persistence Unit',
     description: 'Persistence unit for league data',
     dataSource: 'LeagueDB',
-    allProjectEntities: true,
+    mode: 'PROJECT',
     managedClasses: ['com.example.league.Team', 'com.example.league.Player', 'com.example.league.Match'],
     properties: {
       'hibernate.hbm2ddl.auto': 'update'
@@ -15,7 +15,7 @@ export const data: PersistenceData[] = [
     name: 'Statistics Persistence Unit',
     description: 'Persistence unit for statistics data',
     dataSource: 'StatisticsDB',
-    allProjectEntities: true,
+    mode: 'PROJECT',
     managedClasses: ['com.example.statistics.SeasonStats', 'com.example.statistics.PlayerStats'],
     properties: {
       'hibernate.hbm2ddl.auto': 'validate',
@@ -26,7 +26,7 @@ export const data: PersistenceData[] = [
     name: 'Audit Persistence Unit',
     description: 'Persistence unit for audit logs',
     dataSource: 'AuditDB',
-    allProjectEntities: false,
+    mode: 'LISTED_ONLY',
     managedClasses: ['com.example.audit.AuditLog'],
     properties: {
       'hibernate.hbm2ddl.auto': 'create',

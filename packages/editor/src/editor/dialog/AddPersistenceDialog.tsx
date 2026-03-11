@@ -2,6 +2,7 @@ import type { PersistenceData } from '@axonivy/persistence-editor-protocol';
 import {
   BasicDialogContent,
   BasicField,
+  BasicTooltip,
   Button,
   Dialog,
   DialogContent,
@@ -9,10 +10,6 @@ import {
   hotkeyText,
   Input,
   selectRow,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
   useDialogHotkeys,
   useHotkeys
 } from '@axonivy/ui-components';
@@ -32,14 +29,9 @@ export const AddPersistenceDialog = ({ table, children }: { table: Table<Persist
   useHotkeys(shortcut.hotkey, () => onOpenChange(true), { scopes: ['global'], keyup: true, enabled: !open });
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <DialogTrigger asChild>{children}</DialogTrigger>
-          </TooltipTrigger>
-          <TooltipContent>{shortcut.label}</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <BasicTooltip content={shortcut.label}>
+        <DialogTrigger asChild>{children}</DialogTrigger>
+      </BasicTooltip>
       <DialogContent onCloseAutoFocus={e => e.preventDefault()}>
         <AddDialogContent table={table} closeDialog={() => onOpenChange(false)} />
       </DialogContent>
@@ -59,7 +51,7 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<PersistenceData
     if (!allInputsValid) {
       return;
     }
-    setData(old => [...old, { name, dataSource: '', description: '', allProjectEntities: true, managedClasses: [], properties: {} }]);
+    setData(old => [...old, { name, dataSource: '', description: '', mode: 'PROJECT', managedClasses: [], properties: {} }]);
     if (!event.ctrlKey && !event.metaKey) {
       closeDialog();
     } else {
@@ -77,23 +69,18 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<PersistenceData
       title={t('dialog.addPersistence.title')}
       description={t('dialog.addPersistence.desc')}
       submit={
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant='primary'
-                size='large'
-                icon={IvyIcons.Plus}
-                aria-label={t('dialog.create')}
-                disabled={!allInputsValid}
-                onClick={addPersistence}
-              >
-                {t('dialog.create')}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>{t('dialog.createTooltip', { modifier: hotkeyText('mod') })}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <BasicTooltip content={t('dialog.createTooltip', { modifier: hotkeyText('mod') })}>
+          <Button
+            variant='primary'
+            size='large'
+            icon={IvyIcons.Plus}
+            aria-label={t('dialog.create')}
+            disabled={!allInputsValid}
+            onClick={addPersistence}
+          >
+            {t('dialog.create')}
+          </Button>
+        </BasicTooltip>
       }
       cancel={
         <Button variant='outline' size='large'>

@@ -14,7 +14,7 @@ test('data', async ({ page }) => {
   await expect(editor.detail.dataSource.locator).toHaveText('CoreDB');
   await expect(editor.detail.description.locator).toHaveValue('Primary transactional database for core business operations');
   await editor.detail.managedClasses.expectToHaveOptions('ivy.entities.Department', 'persistence.test.project.AnotherVeryCoolEntity', 'persistence.test.project.VeryCoolEntity');
-  await editor.detail.manageAllEntityClasses.expectValue(true);
+  await expect(editor.detail.inclusionMode.locator).toHaveText('From Project');
   await editor.detail.managedClasses.expectToHaveValue('persistence.test.project.AnotherVeryCoolEntity');
   await editor.detail.properties.expectToHaveRowValues(['hibernate.hbm2ddl.auto', 'create-drop'], ['hibernate.dialect', 'org.hibernate.dialect.H2Dialect']);
 });

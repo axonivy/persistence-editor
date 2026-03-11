@@ -15,14 +15,14 @@ test('edit persistence', async ({ page }) => {
   await expect(editor.detail.name.locator).toHaveValue('League Persistence Unit');
   await expect(editor.detail.dataSource.locator).toHaveText('LeagueDB');
   await expect(editor.detail.description.locator).toHaveValue('Persistence unit for league data');
-  await editor.detail.manageAllEntityClasses.expectValue(true);
+  await expect(editor.detail.inclusionMode.locator).toHaveText('From Project');
   await editor.detail.managedClasses.expectToHaveValue('com.example.league.Team,com.example.league.Player,com.example.league.Match');
   await editor.detail.properties.expectToHaveRowValues(['hibernate.hbm2ddl.auto', 'update']);
 
   await editor.detail.name.locator.fill('Updated Persistence Unit');
   await editor.detail.description.locator.fill('Updated Description');
   await editor.detail.dataSource.select('FinanceDB');
-  await editor.detail.manageAllEntityClasses.toggle();
+  await editor.detail.inclusionMode.select('From Project & Dependent');
   await editor.detail.managedClasses.select('com.acme.bank.payment.Payment');
   const row = await editor.detail.properties.addRow();
   await row.fill(['newProp', 'newValue']);
@@ -34,6 +34,6 @@ test('edit persistence', async ({ page }) => {
   await expect(editor.detail.description.locator).toHaveValue('Updated Description');
   await expect(editor.detail.dataSource.locator).toHaveText('FinanceDB');
   await editor.detail.managedClasses.expectToHaveValue('com.example.league.Team,com.example.league.Player,com.example.league.Match,com.acme.bank.payment.Payment');
-  await editor.detail.manageAllEntityClasses.expectValue(false);
+  await expect(editor.detail.inclusionMode.locator).toHaveText('From Project & Dependent');
   await editor.detail.properties.expectToHaveRowValues(['hibernate.hbm2ddl.auto', 'update'], ['newProp', 'newValue']);
 });

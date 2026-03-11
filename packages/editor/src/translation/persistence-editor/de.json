@@ -63,15 +63,24 @@
     "deletePersistence": "Persistenzeinheit löschen ({{hotkey}})"
   },
   "info": {
-    "managedClasses": "Geben Sie die Liste der Klassen an, die in dieser Persistenzeinheit verwaltet werden sollen. Wenn 'Alle Entity-Klassen aus dem Projekt verwalten' nicht aktiviert ist, werden nur die unten aufgeführten Entity-Klassen in die Persistenzeinheit aufgenommen. Andernfalls werden automatisch alle Entity-Klassen des Projekts eingeschlossen."
+    "managedClasses": "Geben Sie die Entitätsklassen an, die in dieser Persistence Unit enthalten sein sollen. Die explizit aufgelisteten Klassen werden immer berücksichtigt. Abhängig von den ausgewählten einbezogenen Klassen werden zusätzlich alle Entitätsklassen des aktuellen Projekts und optional auch der erforderlichen Projekte automatisch erkannt und verwaltet.",
+    "mode_ListedOnly": "Nur die explizit aufgelisteten Klassen werden einbezogen. Keine automatische Erkennung.",
+    "mode_Project": "Beinhaltet die aufgelisteten Klassen sowie alle im aktuellen Projekt gefundenen Entitätsklassen.",
+    "mode_ProjectRequired": "Beinhaltet die aufgelisteten Klassen sowie alle im aktuellen Projekt und in erforderlichen Projekten gefundenen Entitätsklassen."
   },
   "label": {
     "dataSource": "Datenquelle",
     "defaultValue": "Standardwert: {{defaultValue}}",
     "description": "Beschreibung",
+    "discoveryMode": {
+      "LISTED_ONLY": "Nur aufgelistete",
+      "PROJECT": "Aus Projekt",
+      "PROJECT_REQUIRED": "Aus Projekt & Abhängigkeiten",
+      "title": "Einbezogene Klassen"
+    },
     "examples": "Beispiele: {{examples}}",
-    "manageAllFromProject": "Alle Entity-Klassen aus dem Projekt verwalten",
-    "managedClasses": "Verwaltete Klassen",
+    "managedClasses": "Verwaltete Entitätsklassen",
+    "manualIncludedClasses": "Aufgelistete Klassen",
     "noManagedClassesFound": "Keine verwalteten Klassen gefunden",
     "noPersistenceSelected": "Keine Persistenzeinheit ausgewählt",
     "persistenceUnits": "Persistenzeinheiten",

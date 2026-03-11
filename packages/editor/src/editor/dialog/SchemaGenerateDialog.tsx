@@ -3,18 +3,14 @@ import {
   BasicDialogContent,
   BasicField,
   BasicSelect,
+  BasicTooltip,
   Button,
   Dialog,
   DialogContent,
   DialogTrigger,
   Flex,
-  hotkeyText,
   Message,
   toast,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
   useDialogHotkeys
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
@@ -35,14 +31,9 @@ export const SchemaGenerateDialog = ({ children }: { children: ReactNode }) => {
   const selectedPersistence = data[selectedIndex];
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <DialogTrigger asChild>{children}</DialogTrigger>
-          </TooltipTrigger>
-          <TooltipContent>{t('dialog.generateSchema.title')}</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <BasicTooltip content={t('dialog.generateSchema.title')}>
+        <DialogTrigger asChild>{children}</DialogTrigger>
+      </BasicTooltip>
       <DialogContent className='max-h-none! w-[clamp(300px,700px,calc(100%-200px))]! max-w-none!'>
         {selectedPersistence && (
           <SchemaGenerateDialogContent selectedPersistence={selectedPersistence} closeDialog={() => onOpenChange(false)} />
@@ -184,45 +175,26 @@ type SubmitButtonProps = {
 
 export const SubmitButton = ({ status, onExecute, onRetry, onClose }: SubmitButtonProps) => {
   const { t } = useTranslation();
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          {status === 'previewSuccess' ? (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant='primary' size='large' icon={IvyIcons.Play} aria-label={t('dialog.execute')} onClick={onExecute}>
-                    {t('dialog.execute')}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>{t('dialog.executeTooltip')}</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ) : status === 'failed' ? (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant='primary' size='large' icon={IvyIcons.Redo} aria-label={t('dialog.retry')} onClick={onRetry}>
-                    {t('dialog.retry')}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>{t('dialog.retryTooltip')}</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ) : status === 'loading' ? (
-            <Button variant='primary' size='large' icon={IvyIcons.Spinner} aria-label={t('dialog.loading')} disabled={true} spin={true}>
-              {t('dialog.loading')}
-            </Button>
-          ) : (
-            <Button variant='primary' size='large' icon={IvyIcons.Close} aria-label={t('dialog.close')} onClick={onClose}>
-              {t('dialog.close')}
-            </Button>
-          )}
-        </TooltipTrigger>
-        <TooltipContent>{t('dialog.createTooltip', { modifier: hotkeyText('mod') })}</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+  return status === 'previewSuccess' ? (
+    <BasicTooltip content={t('dialog.executeTooltip')}>
+      <Button variant='primary' size='large' icon={IvyIcons.Play} aria-label={t('dialog.execute')} onClick={onExecute}>
+        {t('dialog.execute')}
+      </Button>
+    </BasicTooltip>
+  ) : status === 'failed' ? (
+    <BasicTooltip content={t('dialog.retryTooltip')}>
+      <Button variant='primary' size='large' icon={IvyIcons.Redo} aria-label={t('dialog.retry')} onClick={onRetry}>
+        {t('dialog.retry')}
+      </Button>
+    </BasicTooltip>
+  ) : status === 'loading' ? (
+    <Button variant='primary' size='large' icon={IvyIcons.Spinner} aria-label={t('dialog.loading')} disabled={true} spin={true}>
+      {t('dialog.loading')}
+    </Button>
+  ) : (
+    <Button variant='primary' size='large' icon={IvyIcons.Close} aria-label={t('dialog.close')} onClick={onClose}>
+      {t('dialog.close')}
+    </Button>
   );
 };
 
@@ -243,13 +215,8 @@ const CopyToClipboardButton = ({ script }: { script?: string }) => {
   };
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button icon={IvyIcons.Duplicate} onClick={copyScriptToClipboard} />
-        </TooltipTrigger>
-        <TooltipContent>{t('dialog.generateSchema.copySql')}</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <BasicTooltip content={t('dialog.generateSchema.copySql')}>
+      <Button icon={IvyIcons.Duplicate} onClick={copyScriptToClipboard} disabled={!script} />
+    </BasicTooltip>
   );
 };
