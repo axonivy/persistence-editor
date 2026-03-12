@@ -1,9 +1,10 @@
-# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/persistence-1.json
+# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/persistence-2.json
 Persistence:
   #Primary transactional database for core business operations
   CoreBusinessPU:
     DataSource: CoreDB
     Managed:
+      Mode: PROJECT
       Classes:
         - persistence.test.project.AnotherVeryCoolEntity
     Properties:
@@ -13,6 +14,7 @@ Persistence:
   ReportingPU:
     DataSource: ReportingDB
     Managed:
+      Mode: PROJECT
       Classes:
         - persistence.test.project.VeryCoolEntity
     Properties:

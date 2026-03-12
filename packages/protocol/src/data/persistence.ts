@@ -5,7 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type GenerationType = ("UPDATE" | "CREATE")
+export type EntityDiscoveryMode = ("PROJECT" | "PROJECT_AND_REQUIRED" | "LISTED_ONLY")
+export type GenerationType = "UPDATE" | "CREATE";
 
 export interface Persistence {
   boolean: boolean;
@@ -41,10 +42,10 @@ export interface PersistenceEditorData {
   readonly: boolean;
 }
 export interface PersistenceData {
-  allProjectEntities: boolean;
   dataSource: string;
   description: string;
   managedClasses: string[];
+  mode: EntityDiscoveryMode;
   name: string;
   properties: MapStringString;
 }

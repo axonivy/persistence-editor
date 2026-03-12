@@ -1,5 +1,4 @@
 import { type Locator, type Page } from '@playwright/test';
-import { Checkbox } from './components/Checkbox';
 import { Combobox } from './components/Combobox';
 import { Select } from './components/Select';
 import { Table } from './components/Table';
@@ -14,7 +13,7 @@ export class Detail {
   readonly dataSource: Select;
   readonly managedClasses: Combobox;
   readonly description: Textbox;
-  readonly manageAllEntityClasses: Checkbox;
+  readonly inclusionMode: Select;
   readonly properties: Table;
 
   constructor(page: Page) {
@@ -25,8 +24,8 @@ export class Detail {
     this.name = new Textbox(this.locator, { name: 'Name' });
     this.description = new Textbox(this.locator, { name: 'Description' });
     this.dataSource = new Select(page, this.locator, { name: 'Data Source' });
-    this.manageAllEntityClasses = new Checkbox(page, this.locator, 'Manage All Entity Classes from Project');
-    this.managedClasses = new Combobox(page, this.locator, { name: 'Managed Classes' });
+    this.inclusionMode = new Select(page, this.locator, { name: 'Included Classes' });
+    this.managedClasses = new Combobox(page, this.locator, { name: 'Listed Classes' });
     this.properties = new Table(page, this.locator);
   }
 }

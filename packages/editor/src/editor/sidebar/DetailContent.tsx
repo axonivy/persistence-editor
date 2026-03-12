@@ -1,6 +1,5 @@
-import type { PersistenceData } from '@axonivy/persistence-editor-protocol';
+import type { EntityDiscoveryMode, PersistenceData } from '@axonivy/persistence-editor-protocol';
 import {
-  BasicCheckbox,
   BasicField,
   BasicInput,
   BasicSelect,
@@ -106,27 +105,38 @@ const ManagedClassesCollapsible = ({
       <CollapsibleTrigger> {t('label.managedClasses')} </CollapsibleTrigger>
       <CollapsibleContent>
         <Flex direction='column' gap={3}>
-          <Flex alignItems='center' gap={2} justifyContent='space-between'>
-            <BasicCheckbox
-              label={t('label.manageAllFromProject')}
-              checked={persistence.allProjectEntities}
-              onCheckedChange={checked => handleAttributeChange('allProjectEntities', checked === true)}
+          <BasicField
+            label={t('label.discoveryMode.title')}
+            control={
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button icon={IvyIcons.InfoCircle} />
+                </PopoverTrigger>
+                <PopoverContent collisionPadding={10} className='max-w-125'>
+                  {t('info.managedClasses')}
+                  <PopoverArrow />
+                </PopoverContent>
+              </Popover>
+            }
+          >
+            <BasicSelect
+              items={[
+                { label: t('label.discoveryMode.PROJECT'), value: 'PROJECT', info: t('info.mode_Project') },
+                { label: t('label.discoveryMode.PROJECT_REQUIRED'), value: 'PROJECT_AND_REQUIRED', info: t('info.mode_ProjectRequired') },
+                { label: t('label.discoveryMode.LISTED_ONLY'), value: 'LISTED_ONLY', info: t('info.mode_ListedOnly') }
+              ]}
+              defaultValue='PROJECT'
+              value={persistence.mode}
+              onValueChange={value => handleAttributeChange('mode', value as EntityDiscoveryMode)}
             />
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button icon={IvyIcons.InfoCircle} />
-              </PopoverTrigger>
-              <PopoverContent collisionPadding={10} className='max-w-125'>
-                {t('info.managedClasses')}
-                <PopoverArrow />
-              </PopoverContent>
-            </Popover>
-          </Flex>
-          <ManagedClassesCombobox
-            value={persistence.managedClasses}
-            onChange={value => handleAttributeChange('managedClasses', value)}
-            entityClasses={entityClasses}
-          />
+          </BasicField>
+          <BasicField label={t('label.manualIncludedClasses')}>
+            <ManagedClassesCombobox
+              value={persistence.managedClasses}
+              onChange={value => handleAttributeChange('managedClasses', value)}
+              entityClasses={entityClasses}
+            />
+          </BasicField>
         </Flex>
       </CollapsibleContent>
     </Collapsible>

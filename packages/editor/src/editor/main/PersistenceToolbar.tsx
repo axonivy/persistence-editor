@@ -1,14 +1,11 @@
 import {
+  BasicTooltip,
   Button,
   Flex,
   Separator,
   Toolbar,
   ToolbarContainer,
   ToolbarTitle,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
   useHotkeys,
   useReadonly,
   useRedoHotkey,
@@ -34,19 +31,14 @@ export const PersistenceToolbar = () => {
       <ToolbarTitle>{t('title.main', { name: context.pmv })}</ToolbarTitle>
       <Flex gap={1}>
         {!readonly && <EditButtons />}
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                icon={IvyIcons.LayoutSidebarRightCollapse}
-                size='large'
-                onClick={() => setDetail(!detail)}
-                aria-label={t('common.label.details')}
-              />
-            </TooltipTrigger>
-            <TooltipContent>{t('common.label.details')}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <BasicTooltip content={t('common.label.details')}>
+          <Button
+            icon={IvyIcons.LayoutSidebarRightCollapse}
+            size='large'
+            onClick={() => setDetail(!detail)}
+            aria-label={t('common.label.details')}
+          />
+        </BasicTooltip>
       </Flex>
     </Toolbar>
   );
@@ -63,22 +55,12 @@ const EditButtons = () => {
     <ToolbarContainer maxWidth={450}>
       <Flex>
         <Flex gap={1}>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button aria-label={hotkeys.undo.label} icon={IvyIcons.Undo} size='large' onClick={undo} disabled={!history.canUndo} />
-              </TooltipTrigger>
-              <TooltipContent>{hotkeys.undo.label}</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button aria-label={hotkeys.redo.label} icon={IvyIcons.Redo} size='large' onClick={redo} disabled={!history.canRedo} />
-              </TooltipTrigger>
-              <TooltipContent>{hotkeys.redo.label}</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <BasicTooltip content={hotkeys.undo.label}>
+            <Button aria-label={hotkeys.undo.label} icon={IvyIcons.Undo} size='large' onClick={undo} disabled={!history.canUndo} />
+          </BasicTooltip>
+          <BasicTooltip content={hotkeys.redo.label}>
+            <Button aria-label={hotkeys.redo.label} icon={IvyIcons.Redo} size='large' onClick={redo} disabled={!history.canRedo} />
+          </BasicTooltip>
         </Flex>
         <Separator orientation='vertical' className='mx-2! h-6.5!' />
       </Flex>

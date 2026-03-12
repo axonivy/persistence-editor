@@ -1,16 +1,13 @@
 import {
   BasicDialogHeader,
   BasicInput,
+  BasicTooltip,
   Button,
   Dialog,
   DialogContent,
   DialogTrigger,
   InputGroup,
   selectNextPreviousCell,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
   useEditCell,
   type InputProps
 } from '@axonivy/ui-components';
@@ -59,16 +56,11 @@ export const InputCellWithBrowser = <TData,>({ cell, activeBrowsers }: InputCell
           }}
         />
         {isFocusWithin && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <DialogTrigger asChild>
-                  <Button icon={IvyIcons.ListSearch} aria-label={t('common.label.browser')} onBlur={onBlur} />
-                </DialogTrigger>
-              </TooltipTrigger>
-              <TooltipContent>{t('common.label.browser')}</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <BasicTooltip content={t('common.label.browser')}>
+            <DialogTrigger asChild>
+              <Button icon={IvyIcons.ListSearch} aria-label={t('common.label.browser')} onBlur={onBlur} />
+            </DialogTrigger>
+          </BasicTooltip>
         )}
       </InputGroup>
       <DialogContent className='h-[80vh]'>

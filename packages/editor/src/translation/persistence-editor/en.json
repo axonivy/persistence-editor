@@ -63,15 +63,24 @@
     "deletePersistence": "Delete Persistence Unit ({{hotkey}})"
   },
   "info": {
-    "managedClasses": "Specify the list of classes to be managed in this persistence unit. If 'Manage All Entity Classes from Project' is unchecked, only the entity classes in the list below are included in the persistence unit. Otherwise all entity classes of the project are included automatically."
+    "managedClasses": "Specify the entity classes to include in this persistence unit. The explicitly listed classes are always included. Depending on the selected Included Classes, all entity classes from the current project and optionally from required projects are discovered and managed automatically.",
+    "mode_ListedOnly": "Only the explicitly listed classes are included. No automatic discovery.",
+    "mode_Project": "Includes listed classes plus all entity classes discovered in the current project.",
+    "mode_ProjectRequired": "Includes listed classes plus all entity classes discovered in the current and required projects."
   },
   "label": {
     "dataSource": "Data Source",
     "defaultValue": "Default Value: {{defaultValue}}",
     "description": "Description",
+    "discoveryMode": {
+      "LISTED_ONLY": "Only Listed",
+      "PROJECT": "From Project",
+      "PROJECT_REQUIRED": "From Project & Dependent",
+      "title": "Included Classes"
+    },
     "examples": "Examples: {{examples}}",
-    "manageAllFromProject": "Manage All Entity Classes from Project",
-    "managedClasses": "Managed Classes",
+    "managedClasses": "Managed Entitiy Classes",
+    "manualIncludedClasses": "Listed Classes",
     "noManagedClassesFound": "No managed classes found",
     "noPersistenceSelected": "No Persistence Unit Selected",
     "persistenceUnits": "Persistence Units",
