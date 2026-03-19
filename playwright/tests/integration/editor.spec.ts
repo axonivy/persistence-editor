@@ -108,7 +108,8 @@ test('schemaGenerate', async ({ page }) => {
   const editor = await PersistenceEditor.openMock(page);
   await editor.main.table.expectToHaveRowCount(3);
   const dialog = await editor.main.openSchemaGenerateDialog(0);
-  await expect(dialog.type.locator).toHaveText('Create');
+  await expect(dialog.type.locator).toHaveText('Update');
+  await dialog.type.select('Create');
   await expect(dialog.generatedSql).toContainText('create sequence AnotherVeryCoolEntity_SEQ start with 1 increment by 50;');
   await expect(dialog.execute).toBeVisible();
   await expect(dialog.retry).toBeHidden();
