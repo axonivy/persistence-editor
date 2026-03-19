@@ -164,13 +164,14 @@ const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceD
   }
   return (
     <Flex gap={2}>
+      <SchemaGenerateDialog>
+        <Button icon={IvyIcons.SettingsCog} aria-label={t('dialog.generateSchema.title')} disabled={deletePersistence === undefined} />
+      </SchemaGenerateDialog>
+      <Separator decorative orientation='vertical' className='m-0! h-5!' />
       <AddPersistenceDialog table={table}>
         <Button icon={IvyIcons.Plus} aria-label={hotkeys.addPersistence.label} />
       </AddPersistenceDialog>
       <Separator decorative orientation='vertical' className='m-0! h-5!' />
-      <SchemaGenerateDialog>
-        <Button icon={IvyIcons.SettingsCog} aria-label={t('dialog.generateSchema.title')} disabled={deletePersistence === undefined} />
-      </SchemaGenerateDialog>
       <BasicTooltip content={hotkeys.deletePersistence.label}>
         <Button
           icon={IvyIcons.Trash}

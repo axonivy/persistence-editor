@@ -48,7 +48,7 @@ type SchemaGenerateDialogContentProps = { closeDialog: () => void; selectedPersi
 const SchemaGenerateDialogContent = ({ closeDialog, selectedPersistence }: SchemaGenerateDialogContentProps) => {
   const { t } = useTranslation();
   const { context } = useAppContext();
-  const [type, setType] = useState<GenerationType>('CREATE');
+  const [type, setType] = useState<GenerationType>('UPDATE');
   const client = useClient();
 
   const {
