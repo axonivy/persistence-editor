@@ -1,7 +1,7 @@
 {
   "common": {
     "hotkey": {
-      "focusInscription": "Fokus Detailansicht ({{hotkey}})2",
+      "focusInscription": "Fokus Detailansicht ({{hotkey}})",
       "focusMain": "Fokus Hauptansicht ({{hotkey}})",
       "focusToolbar": "Fokus Toolbar ({{hotkey}})",
       "help": "Hilfe öffnen ({{hotkey}})",
