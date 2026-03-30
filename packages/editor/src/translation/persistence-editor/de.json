@@ -41,7 +41,7 @@
     "execute": "Ausführen",
     "executeTooltip": "Führen Sie das angezeigte SQL in der verbundenen Datenbank aus.",
     "generateSchema": {
-      "copyFailed": "Kopieren fehlgeschlagen",
+      "copyFailed": "Fehler beim Kopieren von SQL in die Zwischenablage",
       "copySql": "SQL kopieren",
       "copySuccess": "SQL erfolgreich kopiert",
       "create": "Erstellen",
