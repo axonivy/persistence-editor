@@ -11,9 +11,9 @@
   "dependencies": {
     "@axonivy/persistence-editor": "workspace:~14.0.0-next",
     "@axonivy/persistence-editor-protocol": "workspace:~14.0.0-next",
-    "@axonivy/jsonrpc": "~14.0.0-next.1048.55a3654",
-    "@axonivy/ui-components": "~14.0.0-next.1048.55a3654",
-    "@axonivy/ui-icons": "~14.0.0-next.1048.55a3654",
+    "@axonivy/jsonrpc": "~14.0.0-next.1101.a7eaf61",
+    "@axonivy/ui-components": "~14.0.0-next.1101.a7eaf61",
+    "@axonivy/ui-icons": "~14.0.0-next.1101.a7eaf61",
     "@tanstack/react-query": "^5.64",
     "@tanstack/react-query-devtools": "^5.64",
     "i18next": "^26.0.0",
