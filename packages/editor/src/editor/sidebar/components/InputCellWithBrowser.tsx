@@ -25,9 +25,9 @@ export const InputCellWithBrowser = <TData,>({ cell, activeBrowsers }: InputCell
   const [open, setOpen] = useState(false);
   const { value, setValue, onBlur, updateValue } = useEditCell(cell);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isFocusWithin, setFocusWithin] = useState(false);
+  const [isFocusWithin, setIsFocusWithin] = useState(false);
   const { focusWithinProps } = useFocusWithin({
-    onFocusWithinChange: setFocusWithin
+    onFocusWithinChange: setIsFocusWithin
   });
 
   return (
