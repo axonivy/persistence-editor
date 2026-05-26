@@ -1,14 +1,28 @@
 {
   "common": {
-    "hotkey": {},
-    "label": {},
-    "message": {}
+    "hotkey": {
+      "focusInscription": "インスクリプションをフォーカス ({{hotkey}})",
+      "focusToolbar": "焦点のツールバー({{hotkey}})",
+      "focusMain": "焦点の本管({{hotkey}})"
+    },
+    "label": {
+      "browser": "ブラウザ",
+      "cancel": "キャンセル",
+      "details": "詳細",
+      "general": "一般",
+      "info": "情報",
+      "name": "名前",
+      "value": "値",
+      "search": "検索"
+    }
   },
-  "dialog": {
-    "addPersistence": {}
+  "label": {
+    "dataSource": "データソース",
+    "description": "説明",
+    "properties": "プロパティ"
   },
-  "hotkey": {},
-  "label": {},
-  "message": {},
-  "title": {}
+  "message": {
+    "emptyName": "名前を空にすることはできません。",
+    "errorOnly": "エラー: {{error}}"
+  }
 }
