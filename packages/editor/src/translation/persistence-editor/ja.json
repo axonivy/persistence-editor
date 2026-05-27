@@ -2,11 +2,11 @@
   "common": {
     "hotkey": {
       "focusInscription": "インスクリプションをフォーカス ({{hotkey}})",
-      "focusToolbar": "焦点のツールバー({{hotkey}})",
-      "focusMain": "焦点の本管({{hotkey}})",
-      "help": "オープンヘルプ({{hotkey}})",
-      "undo": "Undo({{hotkey}})",
-      "redo": "Redo ({{hotkey}})"
+      "focusToolbar": "ツールバーをフォーカス ({{hotkey}})",
+      "focusMain": "メインをフォーカス ({{hotkey}})",
+      "help": "ヘルプを開く ({{hotkey}})",
+      "undo": "元に戻す ({{hotkey}})",
+      "redo": "やり直す ({{hotkey}})"
     },
     "label": {
       "browser": "ブラウザ",
@@ -17,7 +17,7 @@
       "name": "名前",
       "value": "値",
       "search": "検索",
-      "apply": "お問い合わせ",
+      "apply": "適用",
       "remove": "削除"
     },
     "message": {
@@ -47,7 +47,7 @@
     "emptyName": "名前を空にすることはできません。",
     "errorOnly": "エラー: {{error}}",
     "addFirstPersistence": "最初の永続ユニットを追加して、開始",
-    "notFound": "お知らせ",
+    "notFound": "見つかりません",
     "persistenceAlreadyExists": "永続ユニットは既に存在しています."
   },
   "dialog": {
@@ -59,9 +59,9 @@
       "description": "利用可能なオプションを参照します.",
       "title": "ブラウザ",
       "loadError": "ブラウザデータをロードできません",
-      "loading": "ローディング..."
+      "loading": "読み込み中..."
     },
-    "close": "ふりがな",
+    "close": "閉じる",
     "createTooltip": "{{modifier}} を持たせて、追加の永続ユニットを追加します.",
     "execute": "実行する",
     "executeTooltip": "接続されたデータベースで表示されるSQLを実行します.",
@@ -69,20 +69,20 @@
       "copyFailed": "SQLをクリップボードにコピーできない",
       "copySql": "SQLのコピー",
       "copySuccess": "クリップボードにコピーされたSQL",
-      "create": "作成する",
+      "create": "作成",
       "description": "現在の永続ユニット構成に基づいてデータベーススキーマを作成します.",
       "nothingToGenerate": "何も生成しない",
       "sqlTitle": "生成されたSQL",
       "successMessage": "Schema 生成 正常に",
-      "successTitle": "成功事例",
+      "successTitle": "成功",
       "title": "スキーマの生成",
       "type": "世代別タイプ",
-      "update": "新着情報"
+      "update": "更新"
     },
-    "loading": "ログイン",
+    "loading": "読み込み中",
     "retry": "リトリート",
     "retryTooltip": "SQL プレビューを生成します.",
-    "create": "作成する"
+    "create": "作成"
   },
   "hotkey": {
     "addPersistence": "永続ユニットを追加({{hotkey}})",
