@@ -1,14 +1,101 @@
 {
   "common": {
-    "hotkey": {},
-    "label": {},
-    "message": {}
+    "hotkey": {
+      "focusInscription": "インスクリプションをフォーカス ({{hotkey}})",
+      "focusToolbar": "ツールバーをフォーカス ({{hotkey}})",
+      "focusMain": "メインをフォーカス ({{hotkey}})",
+      "help": "ヘルプを開く ({{hotkey}})",
+      "undo": "元に戻す ({{hotkey}})",
+      "redo": "やり直す ({{hotkey}})"
+    },
+    "label": {
+      "browser": "ブラウザ",
+      "cancel": "キャンセル",
+      "details": "詳細",
+      "general": "一般",
+      "info": "情報",
+      "name": "名前",
+      "value": "値",
+      "search": "検索",
+      "apply": "適用",
+      "remove": "削除"
+    },
+    "message": {
+      "errorOccurred": "エラーが発生しました: {{message}}"
+    }
+  },
+  "label": {
+    "dataSource": "データソース",
+    "description": "説明",
+    "properties": "プロパティ",
+    "defaultValue": "デフォルト値: {{defaultValue}}",
+    "discoveryMode": {
+      "LISTED_ONLY": "リストのみ",
+      "PROJECT": "プロジェクトから",
+      "PROJECT_REQUIRED": "プロジェクトと依存関係から",
+      "title": "含まれたクラス"
+    },
+    "examples": "例:{{examples}}",
+    "managedClasses": "マネージド・エンティティティ・クラス",
+    "manualIncludedClasses": "リストクラス",
+    "noManagedClassesFound": "管理されたクラスが見つかりません",
+    "noPersistenceSelected": "選択された持続的な単位無し",
+    "persistenceUnits": "永続ユニット",
+    "removeRow": "行を削除"
+  },
+  "message": {
+    "emptyName": "名前を空にすることはできません。",
+    "errorOnly": "エラー: {{error}}",
+    "addFirstPersistence": "最初の永続ユニットを追加して、開始",
+    "notFound": "見つかりません",
+    "persistenceAlreadyExists": "永続ユニットは既に存在しています."
   },
   "dialog": {
-    "addPersistence": {}
+    "addPersistence": {
+      "desc": "新しい永続ユニットを追加します.",
+      "title": "持続的な単位を加えて下さい"
+    },
+    "browser": {
+      "description": "利用可能なオプションを参照します.",
+      "title": "ブラウザ",
+      "loadError": "ブラウザデータをロードできません",
+      "loading": "読み込み中..."
+    },
+    "close": "閉じる",
+    "createTooltip": "{{modifier}} を持たせて、追加の永続ユニットを追加します.",
+    "execute": "実行する",
+    "executeTooltip": "接続されたデータベースで表示されるSQLを実行します.",
+    "generateSchema": {
+      "copyFailed": "SQLをクリップボードにコピーできない",
+      "copySql": "SQLのコピー",
+      "copySuccess": "クリップボードにコピーされたSQL",
+      "create": "作成",
+      "description": "現在の永続ユニット構成に基づいてデータベーススキーマを作成します.",
+      "nothingToGenerate": "何も生成しない",
+      "sqlTitle": "生成されたSQL",
+      "successMessage": "Schema 生成 正常に",
+      "successTitle": "成功",
+      "title": "スキーマの生成",
+      "type": "世代別タイプ",
+      "update": "更新"
+    },
+    "loading": "読み込み中",
+    "retry": "リトリート",
+    "retryTooltip": "SQL プレビューを生成します.",
+    "create": "作成"
   },
-  "hotkey": {},
-  "label": {},
-  "message": {},
-  "title": {}
+  "hotkey": {
+    "addPersistence": "永続ユニットを追加({{hotkey}})",
+    "deletePersistence": "永続ユニットの削除({{hotkey}})"
+  },
+  "info": {
+    "managedClasses": "この永続ユニットに含まれているエンティティティティクラスを指定します。 明示的にリストされているクラスは常に含まれています。 選択したクラスに応じて、現在のプロジェクトからのすべてのエンティティティクラスが発見され、必要に応じて自動的に管理されます.",
+    "mode_ListedOnly": "明示的にリストされているクラスのみが含まれています。 自動発見はありません.",
+    "mode_Project": "リストされたクラスと、現在のプロジェクトで発見されたすべてのエンティティティティクラスが含まれています.",
+    "mode_ProjectRequired": "リストされたクラスと、現在および必要なプロジェクトで発見されたすべてのエンティティティティクラスが含まれています."
+  },
+  "title": {
+    "detail": "持続的な単位",
+    "main": "永続ユニット - {{name}}"
+  }
 }
