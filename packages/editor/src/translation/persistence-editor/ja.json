@@ -41,7 +41,7 @@
     "noManagedClassesFound": "管理されたクラスが見つかりません",
     "noPersistenceSelected": "選択された持続的な単位無し",
     "persistenceUnits": "永続ユニット",
-    "removeRow": "行を削除"
+    "removeRow": "行を削除する"
   },
   "message": {
     "emptyName": "名前を空にすることはできません。",
