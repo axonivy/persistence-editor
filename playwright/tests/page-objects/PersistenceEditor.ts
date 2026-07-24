@@ -7,7 +7,7 @@ export const server = process.env.BASE_URL ?? 'localhost:8080/~Developer-persist
 export const user = 'Developer';
 const ws = process.env.TEST_WS ?? '';
 const app = process.env.TEST_APP ?? 'Developer-persistence-test-project';
-const pmv = 'persistence-test-project';
+const project = 'persistence-test-project';
 
 export class PersistenceEditor {
   readonly page: Page;
@@ -25,7 +25,7 @@ export class PersistenceEditor {
 
   static async openPersistence(page: Page, options?: { readonly?: boolean; theme?: string }) {
     const serverUrl = server.replace(/^https?:\/\//, '');
-    let url = `?server=${serverUrl}${ws}&app=${app}&pmv=${pmv}&file=config/persistence.yaml`;
+    let url = `?server=${serverUrl}${ws}&app=${app}&project=${project}&file=config/persistence.yaml`;
     if (options) {
       url += Object.entries(options)
         .map(([key, value]) => `&${key}=${value}`)
