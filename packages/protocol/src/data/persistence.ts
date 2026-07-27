@@ -6,7 +6,7 @@
  */
 
 export type EntityDiscoveryMode = ("PROJECT" | "PROJECT_AND_REQUIRED" | "LISTED_ONLY")
-export type GenerationType = "UPDATE" | "CREATE";
+export type GenerationType = 'UPDATE' | 'CREATE';
 
 export interface Persistence {
   boolean: boolean;
@@ -33,7 +33,7 @@ export interface EditorFileContent {
 export interface PersistenceContext {
   app: string;
   file: string;
-  pmv: string;
+  project: string;
 }
 export interface PersistenceEditorData {
   context: PersistenceContext;

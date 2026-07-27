@@ -20,7 +20,7 @@ export const AppContext = createContext<AppContext>({
   setData: data => data,
   selectedIndex: -1,
   setSelectedIndex: () => {},
-  context: { app: '', pmv: '', file: '' },
+  context: { app: '', project: '', file: '' },
   history: { push: () => {}, undo: () => {}, redo: () => {}, canUndo: false, canRedo: false },
   detail: true,
   setDetail: () => {},

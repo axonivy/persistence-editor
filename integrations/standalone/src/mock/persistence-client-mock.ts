@@ -16,7 +16,7 @@ export class PersistenceClientMock implements PersistenceClient {
   private persistenceData: PersistenceEditorData;
   constructor() {
     this.persistenceData = {
-      context: { app: 'mockApp', pmv: 'mockPmv', file: 'persistence.yaml' },
+      context: { app: 'mockApp', project: 'mockproject', file: 'persistence.yaml' },
       data: data,
       helpUrl: 'https://dev.axonivy.com',
       readonly: false
