@@ -3,6 +3,7 @@ import {
   BasicField,
   BasicTooltip,
   Button,
+  dataTableHelper,
   deleteFirstSelectedRow,
   Flex,
   IvyIcon,
@@ -14,42 +15,30 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableGlobalFilter,
   TableResizableHeader,
   useHotkeys,
   useReadonly,
-  useTableGlobalFilter,
   useTableKeyHandler,
-  useTableSelect,
-  useTableSort
+  type DataTableFeatures
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
-import { flexRender, getCoreRowModel, useReactTable, type ColumnDef, type Table as ReactTable } from '@tanstack/react-table';
-import { useRef } from 'react';
+import { flexRender, useTable, type Table as ReactTable } from '@tanstack/react-table';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useKnownHotkeys } from '../../utils/useKnownHotkeys';
 import { AddPersistenceDialog } from '../dialog/AddPersistenceDialog';
 import { SchemaGenerateDialog } from '../dialog/SchemaGenerateDialog';
 
+const { columnHelper, tableOptions } = dataTableHelper<PersistenceData>();
+
 export const Main = () => {
   const { t } = useTranslation();
   const { data, setData, setSelectedIndex, detail, setDetail } = useAppContext();
 
-  const selection = useTableSelect<PersistenceData>({
-    onSelect: selectedRows => {
-      const selectedRowIndex = Object.keys(selectedRows).find(key => selectedRows[key]);
-      if (selectedRowIndex === undefined) {
-        setSelectedIndex(-1);
-        return;
-      }
-      setSelectedIndex(Number(selectedRowIndex));
-    }
-  });
-  const globalFilter = useTableGlobalFilter();
-  const sort = useTableSort();
-  const columns: Array<ColumnDef<PersistenceData, string>> = [
-    {
-      accessorKey: 'name',
+  const columns = columnHelper.columns([
+    columnHelper.accessor('name', {
       header: ({ column }) => <SortableHeader column={column} name={t('common.label.name')} />,
       cell: cell => (
         <Flex alignItems='center' gap={1}>
@@ -57,27 +46,30 @@ export const Main = () => {
           <span>{cell.getValue()}</span>
         </Flex>
       )
-    },
-    {
-      accessorKey: 'dataSource',
+    }),
+    columnHelper.accessor('dataSource', {
       header: ({ column }) => <SortableHeader column={column} name={t('label.dataSource')} />,
       cell: cell => <span>{cell.getValue()}</span>
-    }
-  ];
+    })
+  ]);
 
-  const table = useReactTable({
-    ...selection.options,
-    ...globalFilter.options,
-    ...sort.options,
+  const table = useTable({
+    ...tableOptions,
     data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    state: {
-      ...selection.tableState,
-      ...sort.tableState,
-      ...globalFilter.tableState
-    }
+    columns
   });
+
+  useEffect(() => {
+    const subscription = table.atoms.rowSelection.subscribe(selectedRows => {
+      const selectedRowIndex = Object.keys(selectedRows).find(key => selectedRows[key]);
+      if (selectedRowIndex === undefined) {
+        setSelectedIndex(-1);
+        return;
+      }
+      setSelectedIndex(Number(selectedRowIndex));
+    });
+    return () => subscription.unsubscribe();
+  }, [table, setSelectedIndex]);
 
   const { handleKeyDown } = useTableKeyHandler({
     table,
@@ -133,7 +125,7 @@ export const Main = () => {
         }
         onClick={event => event.stopPropagation()}
       >
-        {globalFilter.filter}
+        <TableGlobalFilter table={table} />
         <div className='overflow-x-hidden'>
           <Table onKeyDown={e => handleKeyDown(e, () => setDetail(!detail))}>
             <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={resetSelection} />
@@ -155,7 +147,13 @@ export const Main = () => {
   );
 };
 
-const Controls = ({ table, deletePersistence }: { table: ReactTable<PersistenceData>; deletePersistence?: () => void }) => {
+const Controls = ({
+  table,
+  deletePersistence
+}: {
+  table: ReactTable<DataTableFeatures, PersistenceData>;
+  deletePersistence?: () => void;
+}) => {
   const { t } = useTranslation();
   const readonly = useReadonly();
   const hotkeys = useKnownHotkeys();
