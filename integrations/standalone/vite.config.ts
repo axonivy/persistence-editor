@@ -13,8 +13,8 @@ export default defineConfig({
   server: { port: 3000 },
   resolve: {
     alias: {
-      '@axonivy/persistence-editor': resolve(__dirname, '../../packages/editor/src'),
-      '@axonivy/persistence-editor-protocol': resolve(__dirname, '../../packages/protocol/src')
+      '@axonivy/persistence-editor': resolve(import.meta.dirname, '../../packages/editor/src'),
+      '@axonivy/persistence-editor-protocol': resolve(import.meta.dirname, '../../packages/protocol/src')
     }
   },
   base: './'
