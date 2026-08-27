@@ -40,7 +40,7 @@ export class PersistenceClientMock implements PersistenceClient {
   }
 
   async meta<TMeta extends keyof MetaRequestTypes>(path: TMeta, args: MetaRequestTypes[TMeta][0]): Promise<MetaRequestTypes[TMeta][1]> {
-    console.log('Meta:', args);
+    console.log('Meta:', path, args);
     switch (path) {
       case 'meta/scripting/entityClasses':
         return Promise.resolve(DATACLASSES);

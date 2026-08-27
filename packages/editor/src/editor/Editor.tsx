@@ -77,8 +77,7 @@ export const Editor = ({ context, directSave }: PersistenceEditorProps) => {
         return client.saveData({ context, data: saveData.data, directSave: directSave ?? false });
       }
       return Promise.resolve();
-    },
-    onSuccess: () => queryClient.invalidateQueries()
+    }
   });
 
   const detailRef = useRef<HTMLDivElement>(null);
