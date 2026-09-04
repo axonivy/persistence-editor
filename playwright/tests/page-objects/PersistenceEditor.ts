@@ -3,9 +3,9 @@ import { Detail } from './Detail';
 import { Main } from './Main';
 import { Toolbar } from './Toolbar';
 
-export const server = process.env.BASE_URL ?? 'localhost:8080/~Developer-persistence-test-project';
+export const server = process.env.BASE_URL ?? 'localhost:8080/';
 export const user = 'Developer';
-const ws = process.env.TEST_WS ?? '';
+const ws = '~Developer-persistence-test-project';
 const app = process.env.TEST_APP ?? 'Developer-persistence-test-project';
 const project = 'persistence-test-project';
 
