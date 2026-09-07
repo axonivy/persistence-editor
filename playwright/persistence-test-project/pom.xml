@@ -101,13 +101,14 @@
             </goals>
             <configuration>
               <executable>pnpm</executable>
+              <workingDirectory>${project.basedir}/..</workingDirectory>
               <arguments>
                 <argument>run</argument>
                 <argument>${webtest.cmd}</argument>
               </arguments>
-                <environmentVariables>
-                  <BASE_URL>${test.engine.url}</BASE_URL>
-                  <SCREENSHOT_DIR>${project.build.directory}</SCREENSHOT_DIR>
+              <environmentVariables>
+                <BASE_URL>${test.engine.url}</BASE_URL>
+                <SCREENSHOT_DIR>${project.build.directory}</SCREENSHOT_DIR>
               </environmentVariables>
               <successCodes>
                 <successCode>0</successCode>
