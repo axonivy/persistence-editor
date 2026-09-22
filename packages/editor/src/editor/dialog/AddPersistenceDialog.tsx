@@ -2,6 +2,7 @@ import type { PersistenceData } from '@axonivy/persistence-editor-protocol';
 import {
   BasicDialogContent,
   BasicField,
+  BasicSelect,
   BasicTooltip,
   Button,
   Dialog,
@@ -19,6 +20,7 @@ import type { Table } from '@tanstack/react-table';
 import { useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
+import { useMeta } from '../../hooks/useMeta';
 import { useValidateName } from '../../hooks/useValidateName';
 import { useKnownHotkeys } from '../../utils/useKnownHotkeys';
 
@@ -43,8 +45,10 @@ export const AddPersistenceDialog = ({ table, children }: { table: Table<DataTab
 const AddDialogContent = ({ table, closeDialog }: { table: Table<DataTableFeatures, PersistenceData>; closeDialog: () => void }) => {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
-  const { data, setData, setSelectedIndex } = useAppContext();
+  const { context, data, setData, setSelectedIndex } = useAppContext();
   const [name, setName] = useState('');
+  const [dataSource, setDataSource] = useState('');
+  const dataSources = useMeta('meta/dataSources', context, []).data;
   const nameValidationMessage = useValidateName(name, data);
   const allInputsValid = !nameValidationMessage;
 
@@ -52,11 +56,15 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<DataTableFeatur
     if (!allInputsValid) {
       return;
     }
-    setData(old => [...old, { name, dataSource: '', description: '', mode: 'PROJECT', managedClasses: [], properties: {} }]);
+    setData(old => [
+      ...old,
+      { name, dataSource: dataSource || 'UNKNOWN', description: '', mode: 'PROJECT', managedClasses: [], properties: {} }
+    ]);
     if (!event.ctrlKey && !event.metaKey) {
       closeDialog();
     } else {
       setName('');
+      setDataSource('');
       nameInputRef.current?.focus();
     }
     selectRow(table, data.length.toString());
@@ -93,6 +101,14 @@ const AddDialogContent = ({ table, closeDialog }: { table: Table<DataTableFeatur
     >
       <BasicField label={t('common.label.name')} message={nameValidationMessage} aria-label={t('common.label.name')}>
         <Input ref={nameInputRef} value={name} onChange={event => setName(event.target.value)} />
+      </BasicField>
+      <BasicField label={t('label.dataSource')}>
+        <BasicSelect
+          value={dataSource}
+          emptyItem={true}
+          items={dataSources.map(source => ({ label: source, value: source }))}
+          onValueChange={setDataSource}
+        />
       </BasicField>
     </BasicDialogContent>
   );

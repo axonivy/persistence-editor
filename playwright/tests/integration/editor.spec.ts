@@ -26,7 +26,7 @@ test('save data', async ({ page, browserName }, testInfo) => {
   await dialog.name.locator.fill(newPersistenceUnit);
   await dialog.create.click();
   const row = editor.main.table.lastRow();
-  await row.expectToHaveColumns(newPersistenceUnit, '');
+  await row.expectToHaveColumns(newPersistenceUnit, 'UNKNOWN');
 
   await row.locator.click();
   await expect(editor.detail.header).toHaveText(newPersistenceUnit);
@@ -79,9 +79,10 @@ test('add', async ({ page }) => {
 
   await editor.main.openAddPersistenceDialog();
   await dialog.name.locator.fill('NewPersistence');
+  await dialog.dataSource.select('FinanceDB');
   await dialog.create.click();
   await editor.main.table.expectToHaveRowCount(4);
-  await editor.main.table.row(3).expectToHaveColumns('NewPersistence', '');
+  await editor.main.table.row(3).expectToHaveColumns('NewPersistence', 'FinanceDB');
   await editor.main.table.row(3).expectToBeSelected();
   await editor.main.delete.click();
   await editor.main.table.expectToHaveRowCount(3);
