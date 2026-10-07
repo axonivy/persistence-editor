@@ -1,5 +1,7 @@
 import { webSocketConnection, type Connection } from '@axonivy/jsonrpc';
-import { App, ClientContextProvider, initQueryClient, PersistenceClientJsonRpc, QueryProvider } from '@axonivy/persistence-editor';
+import { App, ClientContextProvider, initQueryClient, PersistenceClientJsonRpc } from '@axonivy/persistence-editor';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Flex, HotkeysProvider, ReadonlyProvider, Spinner, ThemeProvider, toast, Toaster } from '@axonivy/ui-components';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -40,13 +42,14 @@ export async function start() {
       <React.StrictMode>
         <ThemeProvider defaultTheme={theme}>
           <ClientContextProvider client={client}>
-            <QueryProvider client={queryClient}>
+            <QueryClientProvider client={queryClient}>
               <ReadonlyProvider readonly={readonly}>
                 <HotkeysProvider initiallyActiveScopes={['global']}>
                   <App context={{ app, project, file }} directSave={directSave} />
                 </HotkeysProvider>
               </ReadonlyProvider>
-            </QueryProvider>
+              <ReactQueryDevtools initialIsOpen={false} buttonPosition={'bottom-left'} />
+            </QueryClientProvider>
           </ClientContextProvider>
           <Toaster closeButton={true} position='bottom-left' />
         </ThemeProvider>
